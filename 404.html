@@ -972,15 +972,19 @@
 
     // Velocidade da abertura: 1 = original; 1.2 = 20% mais rápida
     const INTRO_SPEED = 1.2;
+    const DRAW = 1.4, STAGGER = 0.12;
+    const drawEnd = DRAW + (paths.length - 1) * STAGGER;   // fim do desenho da logo
+    const reveal = drawEnd * 0.95;                         // nome e textos entram com a logo a 95%
+
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } }).timeScale(INTRO_SPEED);
-    tl.to(paths, { strokeDashoffset: 0, duration: 1.4, stagger: 0.12, ease: 'power2.inOut' })   // desenha a logo
-      .to(fills, { autoAlpha: 1, duration: 0.8 }, '-=0.6')                                      // folhas e pontos
-      .to('#mark-container', { scale: 1, y: 0, duration: 1.3, ease: 'power3.inOut' }, '+=0.3')  // sobe e assenta
-      .fromTo('.hero-title-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 1.2, stagger: 0.2 }, '-=0.7')  // nome
-      .fromTo('.hero-cred-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 1, stagger: 0.12 }, '-=0.9')   // credencial
-      .fromTo('.hero-desc-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 1 }, '-=0.8')
-      .fromTo('.hero-cta', { y: 20 }, { y: 0, autoAlpha: 1, duration: 1 }, '-=0.7')
-      .to('#navbar', { autoAlpha: 1, duration: 1 }, '-=0.8');
+    tl.to(paths, { strokeDashoffset: 0, duration: DRAW, stagger: STAGGER, ease: 'power2.inOut' }, 0) // desenha a logo
+      .to(fills, { autoAlpha: 1, duration: 0.8 }, drawEnd - 0.6)                                       // folhas e pontos
+      .to('#mark-container', { scale: 1, y: 0, duration: 1.1, ease: 'power3.inOut' }, reveal)           // logo assenta
+      .fromTo('.hero-title-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 1, stagger: 0.15 }, reveal + 0.25)  // nome
+      .fromTo('.hero-cred-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 0.8, stagger: 0.1 }, reveal + 0.45) // credencial
+      .fromTo('.hero-desc-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 0.8 }, reveal + 0.6)                // frase
+      .fromTo('.hero-cta', { y: 20 }, { y: 0, autoAlpha: 1, duration: 0.8 }, reveal + 0.75)                                      // botão
+      .to('#navbar', { autoAlpha: 1, duration: 0.8 }, reveal + 0.5);
   }
 
   /* ============================================================
