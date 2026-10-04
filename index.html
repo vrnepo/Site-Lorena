@@ -212,51 +212,21 @@
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <!-- ============================================================
-     NAVEGAÇÃO (fixa, fundo branco com blur ao rolar)
+     NAVEGAÇÃO: logomarca em caligrafia + único botão (WhatsApp)
      ============================================================ -->
-<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-700 py-5 px-6 md:px-12">
-  <div class="max-w-7xl mx-auto flex justify-between items-center">
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-700 py-4 md:py-5 px-5 md:px-12">
+  <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
     <a href="#inicio" class="font-script text-3xl md:text-4xl leading-none text-copper whitespace-nowrap">
       Lorena Siqueira
     </a>
-
-    <div class="hidden lg:flex items-center gap-6 xl:gap-10 text-xs tracking-[0.15em] uppercase text-muted font-ui">
-      <a href="#sobre" class="nav-link transition-colors duration-300 hover:text-copper">Sobre</a>
-      <a href="#servicos" class="nav-link transition-colors duration-300 hover:text-copper">Serviços</a>
-      <a href="#protocolos" class="nav-link transition-colors duration-300 hover:text-copper">Vacinas</a>
-      <a href="#atendimento" class="nav-link transition-colors duration-300 hover:text-copper">Atendimento</a>
-      <a href="#contato" class="nav-link transition-colors duration-300 hover:text-copper">Contato</a>
-    </div>
-
     <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."
        target="_blank" rel="noopener"
-       class="nav-cta hidden lg:inline-flex items-center gap-2 text-xs tracking-[0.15em] uppercase text-white bg-copper px-6 py-3 rounded-full hover:bg-copper-light transition-all duration-500 font-ui font-medium shadow-[0_6px_18px_rgba(201,83,95,0.25)]">
+       class="inline-flex items-center gap-2 text-[11px] md:text-xs tracking-[0.15em] uppercase text-white bg-copper px-4 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-copper-light transition-all duration-500 font-ui font-medium shadow-[0_6px_18px_rgba(201,83,95,0.25)] whitespace-nowrap">
       <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon>
-      WhatsApp
+      Falar no WhatsApp
     </a>
-
-    <button id="menu-toggle" aria-label="Abrir menu" aria-expanded="false"
-            class="lg:hidden text-copper focus:outline-none flex flex-col gap-1.5 z-50 relative group">
-      <span class="w-6 h-[1.5px] bg-current transition-all group-hover:w-8"></span>
-      <span class="w-8 h-[1.5px] bg-current transition-all"></span>
-    </button>
   </div>
 </nav>
-
-<!-- Menu mobile (tela cheia) -->
-<div id="mobile-menu" class="mobile-menu fixed inset-0 z-40 bg-white/95 backdrop-blur-md flex flex-col items-center justify-center gap-7 lg:hidden">
-  <a href="#sobre" class="font-display text-3xl text-cream hover:text-copper transition-colors">Sobre</a>
-  <a href="#servicos" class="font-display text-3xl text-cream hover:text-copper transition-colors">Serviços</a>
-  <a href="#protocolos" class="font-display text-3xl text-cream hover:text-copper transition-colors">Vacinas</a>
-  <a href="#atendimento" class="font-display text-3xl text-cream hover:text-copper transition-colors">Atendimento</a>
-  <a href="#contato" class="font-display text-3xl text-cream hover:text-copper transition-colors">Contato</a>
-  <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."
-     target="_blank" rel="noopener"
-     class="mt-4 inline-flex items-center gap-3 text-xs tracking-[0.15em] uppercase text-white bg-copper px-8 py-4 rounded-full font-ui font-medium">
-    <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
-    Falar no WhatsApp
-  </a>
-</div>
 
 
   <main>
@@ -352,18 +322,12 @@
       <span class="block hero-desc-line">Cada paciente é único e merece o melhor cuidado.</span>
     </p>
 
-    <!-- Chamadas -->
-    <div class="hero-cta flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+    <!-- Chamada única -->
+    <div class="hero-cta">
       <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
-         class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-8 py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
+         class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-9 py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
         <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
         <span>Falar no WhatsApp</span>
-      </a>
-      <a href="#servicos" class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-champagne-700 hover:text-copper transition-colors group font-ui">
-        <span>Conheça os serviços</span>
-        <div class="w-9 h-9 rounded-full border border-champagne-300 group-hover:border-copper flex items-center justify-center transition-all duration-500 animate-float">
-          <iconify-icon icon="solar:arrow-down-linear" class="text-lg"></iconify-icon>
-        </div>
       </a>
     </div>
   </div>
@@ -375,337 +339,101 @@
 </section>
 
     <!-- ============================================================
-     SOBRE (fundo branco, texto/imagem alternados, texto gigante ao fundo)
+     SOBRE: foto, apresentação curta, regiões de atendimento e momentos
+     Fotos tratadas em assets/img (tools/photos.py).
      ============================================================ -->
-<section id="sobre" class="relative bg-bg py-28 md:py-40 overflow-hidden">
-  <div class="absolute top-0 left-0 w-full h-full overflow-hidden flex flex-col items-center justify-center pointer-events-none z-0 opacity-[0.07] about-bg-text" aria-hidden="true">
-    <div class="sticky top-1/2 -translate-y-1/2 text-center w-full">
-      <h2 class="font-display text-[15vw] md:text-[12vw] leading-[0.85] tracking-tighter text-copper whitespace-nowrap mb-4">CUIDADO</h2>
-      <h2 class="font-display text-[15vw] md:text-[12vw] leading-[0.85] tracking-tighter text-transparent italic whitespace-nowrap" style="-webkit-text-stroke: 1px #C9535F;">COM AFETO</h2>
-    </div>
-  </div>
+<section id="sobre" class="relative bg-bg py-20 md:py-28 overflow-hidden">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20 mb-16 md:mb-20">
+      <div class="w-full md:w-6/12 lg:w-5/12 flex justify-center md:justify-start">
+        <div class="w-full max-w-[440px] aspect-[4/5] rounded-2xl overflow-hidden about-img-wrap relative shadow-[0_20px_50px_rgba(201,83,95,0.15)] border border-champagne-200">
+          <div class="absolute top-0 left-0 w-full h-full bg-elevated z-10 about-img-overlay"></div>
+          <img src="assets/img/lorena-golden.jpg" alt="Dra. Lorena Siqueira com um golden retriever" class="w-full h-full object-cover scale-110 about-img">
+        </div>
+      </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 space-y-28 md:space-y-40 pb-8">
-    <!-- Bloco 1 -->
-    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
-      <div class="w-full md:w-5/12 about-text-block">
-        <div class="text-xs tracking-[0.25em] text-copper uppercase mb-8 flex items-center gap-4 font-ui font-medium">
+      <div class="w-full md:w-6/12 lg:w-7/12 about-text-block">
+        <div class="text-xs tracking-[0.25em] text-copper uppercase mb-6 flex items-center gap-4 font-ui font-medium">
           <span class="w-8 h-[1px] bg-copper"></span>
           Sobre
           <iconify-icon icon="solar:paw-print-bold" class="text-copper-light"></iconify-icon>
         </div>
-        <h3 class="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8 text-cream leading-[1.08]">
+        <h2 class="font-display text-4xl md:text-5xl tracking-tight mb-6 text-cream leading-[1.08]">
           Medicina veterinária<br><i class="text-copper">com escuta</i>
-        </h3>
-        <p class="text-lg text-muted font-ui leading-relaxed mb-6">
-          A Dra. Lorena Siqueira atende cães e gatos de forma particular, com tempo para ouvir a história de cada animal e da família que cuida dele. Toda consulta parte de uma avaliação completa antes de qualquer vacina, exame ou tratamento.
+        </h2>
+        <p class="text-base md:text-lg text-muted font-ui leading-relaxed mb-5">
+          A Dra. Lorena Siqueira atende cães e gatos de forma particular, com tempo para ouvir a história de cada animal e da família. Toda consulta começa por uma avaliação completa, e o protocolo de vacinas e preventivos é individualizado para cada paciente.
         </p>
-        <p class="text-base text-muted font-ui leading-relaxed">
-          O protocolo de cada paciente é individualizado: o quadro de vacinas e preventivos é orientativo, e a decisão final é sempre da médica veterinária, de acordo com a idade, o histórico e a rotina do pet.
-        </p>
-        <div class="w-12 h-12 rounded-full border border-copper/30 flex items-center justify-center text-copper mt-10 transition-transform duration-500 hover:rotate-12">
-          <iconify-icon icon="solar:heart-linear" class="text-xl"></iconify-icon>
-        </div>
-      </div>
-      <div class="w-full md:w-7/12 flex justify-end">
-        <div class="w-full md:w-4/5 aspect-[4/5] rounded-2xl overflow-hidden about-img-wrap relative shadow-[0_20px_50px_rgba(201,83,95,0.15)] border border-champagne-200">
-          <div class="absolute top-0 left-0 w-full h-full bg-elevated z-10 about-img-overlay"></div>
-          <img src="https://picsum.photos/seed/lorena-sobre-1/1200/1500" alt="Dra. Lorena em atendimento"
-               class="w-full h-full object-cover scale-110 about-img">
+
+        <!-- Regiões de atendimento -->
+        <div class="rose-card p-5 md:p-6 mt-6">
+          <div class="rose-divider text-[11px] tracking-[0.25em] text-copper uppercase mb-4 font-ui font-medium">
+            <span>Regiões de atendimento</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-ui">
+            <div class="flex items-start gap-3">
+              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>
+              <div><p class="text-cream font-medium">Rio de Janeiro</p><p class="text-muted">Zona Sul, Centro, Tijuca e Barra da Tijuca</p></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>
+              <div><p class="text-cream font-medium">Niterói</p><p class="text-muted">Icaraí, Santa Rosa, Centro e Região Oceânica</p></div>
+            </div>
+          </div>
+          <p class="text-xs text-muted font-ui mt-4">Outros bairros sob consulta, conforme a agenda.</p>
         </div>
       </div>
     </div>
 
-    <!-- Bloco 2 -->
-    <div class="flex flex-col-reverse md:flex-row items-center gap-12 md:gap-24">
-      <div class="w-full md:w-6/12 flex justify-start">
-        <div class="w-full md:w-5/6 aspect-[4/3] rounded-2xl overflow-hidden about-img-wrap relative shadow-[0_20px_50px_rgba(201,83,95,0.15)] border border-champagne-200">
-          <div class="absolute top-0 left-0 w-full h-full bg-elevated z-10 about-img-overlay"></div>
-          <img src="https://picsum.photos/seed/lorena-sobre-2/1600/1200" alt="Carteira de saúde e receituário"
-               class="w-full h-full object-cover scale-110 about-img">
-        </div>
-      </div>
-      <div class="w-full md:w-6/12 about-text-block">
-        <div class="text-xs tracking-[0.25em] text-sage uppercase mb-8 flex items-center gap-4 font-ui font-medium">
-          <span class="w-8 h-[1px] bg-sage"></span>
-          Prevenção
-        </div>
-        <h3 class="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight mb-8 text-cream leading-[1.08]">
-          Prevenir protege o pet<br><i class="text-sage">e a família</i>
-        </h3>
-        <p class="text-lg text-muted font-ui leading-relaxed mb-6">
-          Vacinas em dia, vermifugação e controle de pulgas, carrapatos e do verme do coração evitam doenças graves e também zoonoses, como a raiva, que podem atingir as pessoas da casa.
-        </p>
-        <p class="text-base text-muted font-ui leading-relaxed">
-          Cada paciente recebe uma carteira de saúde própria, com o registro de vacinas, preventivos e revacinações, para que o histórico fique sempre à mão.
-        </p>
-      </div>
+    <!-- Momentos -->
+    <div class="grid grid-cols-3 gap-3 md:gap-6 reveal-up">
+      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-spitz.jpg" alt="Dra. Lorena com dois spitz" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
+      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-filhotes.jpg" alt="Filhotes recém-nascidos nas mãos da Dra. Lorena" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
+      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-gato-selfie.jpg" alt="Dra. Lorena com uma gata" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
     </div>
   </div>
 </section>
 
     <!-- ============================================================
-     SERVIÇOS (abas em pílula + linhas interativas)
-     Conteúdo baseado na carteira de saúde e nos receituários.
+     SERVIÇOS: quatro cartões (sem botões)
      ============================================================ -->
-<section id="servicos" class="py-24 md:py-32 bg-elevated border-y border-copper/10">
+<section id="servicos" class="py-20 md:py-28 bg-elevated border-y border-copper/10">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-14 reveal-up">
-      <div>
-        <div class="text-xs tracking-[0.25em] text-copper uppercase mb-6 flex items-center gap-4 font-ui font-medium">
-          <span class="w-8 h-[1px] bg-copper"></span>
-          Serviços
-          <iconify-icon icon="solar:paw-print-bold" class="text-copper-light"></iconify-icon>
-        </div>
-        <h2 class="font-display text-4xl md:text-6xl tracking-tight font-normal mb-4 leading-[1.05] text-cream">
-          O que a Dra. Lorena<br><i class="text-copper">oferece</i>
-        </h2>
-        <p class="text-sm text-muted font-ui">Atendimento particular para cães e gatos. Escolha uma categoria.</p>
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal-up">
+      <div class="rose-divider text-xs tracking-[0.25em] text-copper uppercase mb-5 font-ui font-medium"><span>Serviços</span></div>
+      <h2 class="font-display text-4xl md:text-5xl tracking-tight font-normal leading-[1.05] text-cream">
+        Atendimento particular para<br><i class="text-copper">cães e gatos</i>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      <div class="rose-card p-6 md:p-7 reveal-up hover-lift">
+        <div class="w-11 h-11 rounded-full bg-elevated border border-champagne-200 flex items-center justify-center text-copper mb-5"><iconify-icon icon="solar:stethoscope-linear" class="text-2xl"></iconify-icon></div>
+        <h3 class="font-display text-2xl text-cream mb-3">Consultas</h3>
+        <ul class="space-y-2 text-sm text-muted font-ui leading-relaxed"><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Avaliação clínica completa</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Retorno e acompanhamento</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Orientação sobre rotina e prevenção</li></ul>
+      </div>
+      <div class="rose-card p-6 md:p-7 reveal-up hover-lift">
+        <div class="w-11 h-11 rounded-full bg-elevated border border-champagne-200 flex items-center justify-center text-copper mb-5"><iconify-icon icon="solar:test-tube-linear" class="text-2xl"></iconify-icon></div>
+        <h3 class="font-display text-2xl text-cream mb-3">Vacinação</h3>
+        <ul class="space-y-2 text-sm text-muted font-ui leading-relaxed"><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Cães: polivalente, antirrábica, gripe canina e giárdia</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Gatos: polivalente e antirrábica</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Avaliação antes de cada dose</li></ul>
+      </div>
+      <div class="rose-card p-6 md:p-7 reveal-up hover-lift">
+        <div class="w-11 h-11 rounded-full bg-elevated border border-champagne-200 flex items-center justify-center text-copper mb-5"><iconify-icon icon="solar:shield-check-linear" class="text-2xl"></iconify-icon></div>
+        <h3 class="font-display text-2xl text-cream mb-3">Preventivos</h3>
+        <ul class="space-y-2 text-sm text-muted font-ui leading-relaxed"><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Pulgas, carrapatos e sarnas</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Vermifugação</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Prevenção da dirofilariose</li></ul>
+      </div>
+      <div class="rose-card p-6 md:p-7 reveal-up hover-lift">
+        <div class="w-11 h-11 rounded-full bg-elevated border border-champagne-200 flex items-center justify-center text-copper mb-5"><iconify-icon icon="solar:document-text-linear" class="text-2xl"></iconify-icon></div>
+        <h3 class="font-display text-2xl text-cream mb-3">Documentos</h3>
+        <ul class="space-y-2 text-sm text-muted font-ui leading-relaxed"><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Carteira de saúde do pet</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Receituário</li><li class="flex items-start gap-2"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-sm mt-1 flex-shrink-0"></iconify-icon>Receituário de controle especial</li></ul>
       </div>
     </div>
-
-    <div class="flex overflow-x-auto no-scrollbar gap-2 mb-10 pb-4 border-b border-copper/10 reveal-up" role="tablist">
-      <button class="service-tab active text-xs tracking-widest uppercase px-6 py-3.5 rounded-full border transition-all duration-300 text-white bg-copper border-copper flex-shrink-0 font-ui font-medium" data-category="consultas" role="tab" aria-selected="true">Consultas</button>
-      <button class="service-tab text-xs tracking-widest uppercase px-6 py-3.5 rounded-full border border-champagne-200 text-muted hover:text-copper hover:border-copper/50 transition-all duration-300 flex-shrink-0 font-ui font-medium" data-category="vacinacao" role="tab" aria-selected="false">Vacinação</button>
-      <button class="service-tab text-xs tracking-widest uppercase px-6 py-3.5 rounded-full border border-champagne-200 text-muted hover:text-copper hover:border-copper/50 transition-all duration-300 flex-shrink-0 font-ui font-medium" data-category="preventivos" role="tab" aria-selected="false">Preventivos</button>
-      <button class="service-tab text-xs tracking-widest uppercase px-6 py-3.5 rounded-full border border-champagne-200 text-muted hover:text-copper hover:border-copper/50 transition-all duration-300 flex-shrink-0 font-ui font-medium" data-category="documentos" role="tab" aria-selected="false">Documentos</button>
-    </div>
-
-    <div class="service-list active flex flex-col" data-category="consultas">
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">01</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Consulta clínica</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Cães e gatos</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Avaliação completa</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Presencial</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">02</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Retorno e acompanhamento</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Pacientes em tratamento</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Ajuste de conduta</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Presencial</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">03</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Orientação ao tutor</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Rotina, alimentação e prevenção</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Dúvidas do dia a dia</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Presencial ou online</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <div class="service-list flex-col hidden" data-category="vacinacao">
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">01</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Vacinação de cães</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Polivalente V8/V10, antirrábica, gripe canina e giárdia</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Protocolo pediátrico + reforço anual</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Com carteira de saúde</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">02</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Vacinação de gatos</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Polivalente V3/V4/V5 e antirrábica</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Protocolo pediátrico + reforço anual</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Com carteira de saúde</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">03</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Avaliação pré-vacinal</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Só animais saudáveis são vacinados</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Exame clínico antes de cada dose</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Incluída</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <div class="service-list flex-col hidden" data-category="preventivos">
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">01</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Controle de ectoparasitas</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Pulgas, carrapatos e sarnas</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Opções de longa duração, como Bravecto 365</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Registro na carteira</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">02</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Vermifugação</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Controle de endoparasitas</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Conforme peso, idade e ambiente</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Registro na carteira</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">03</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Prevenção da dirofilariose</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Verme do coração</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Preventivo injetável anual, como ProHeart</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Anual</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <div class="service-list flex-col hidden" data-category="documentos">
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">01</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Carteira de saúde do pet</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Vacinas, preventivos e revacinações</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Histórico de saúde do paciente</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-copper uppercase tracking-widest border border-copper/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Entregue na consulta</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">02</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Receituário</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Prescrição de medicamentos</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Com identificação do paciente</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Quando necessário</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-      <a href="#contato" class="service-row group border-b border-copper/10 py-7 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 hover:bg-hover transition-colors duration-500 px-4 -mx-4 rounded-xl glow-surface">
-        <div class="flex flex-col md:flex-row gap-5 md:gap-14 w-full md:w-auto">
-          <div class="font-display text-3xl md:text-4xl text-copper-light tracking-tight w-24">03</div>
-          <div>
-            <h3 class="text-lg md:text-xl font-medium mb-1 tracking-tight text-cream group-hover:text-copper transition-colors font-ui">Receituário de controle especial</h3>
-            <div class="flex flex-wrap items-center gap-3 text-xs text-muted tracking-wider uppercase font-ui">
-              <span>Medicamentos controlados</span><span class="w-1 h-1 rounded-full bg-copper/50"></span><span>Conforme a legislação vigente</span>
-            </div>
-          </div>
-        </div>
-        <div class="w-full md:w-auto flex justify-between items-center mt-2 md:mt-0">
-          <span class="text-[11px] text-sage uppercase tracking-widest border border-sage/30 px-4 py-1.5 rounded-full md:mr-8 font-ui">Quando necessário</span>
-          <span class="w-10 h-10 rounded-full border border-copper/30 flex items-center justify-center text-copper group-hover:bg-copper group-hover:border-copper group-hover:text-white transition-all duration-500 overflow-hidden relative">
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute transition-transform duration-500 group-hover:translate-x-full group-hover:-translate-y-full"></iconify-icon>
-            <iconify-icon icon="solar:arrow-right-up-linear" class="text-xl absolute -translate-x-full translate-y-full transition-transform duration-500 group-hover:translate-x-0 group-hover:translate-y-0"></iconify-icon>
-          </span>
-        </div>
-      </a>
-    </div>
-
   </div>
 </section>
 
     <!-- ============================================================
      PROTOCOLOS RECOMENDADOS (reprodução das tabelas da carteira de saúde)
      ============================================================ -->
-<section id="protocolos" class="py-24 md:py-32 bg-bg">
+<section id="protocolos" class="py-20 md:py-28 bg-bg">
   <div class="max-w-7xl mx-auto px-6 md:px-12">
     <div class="text-center max-w-2xl mx-auto mb-14 reveal-up">
       <div class="rose-divider text-xs tracking-[0.25em] text-copper uppercase mb-6 font-ui font-medium">
@@ -719,7 +447,7 @@
       </p>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
       <!-- Gatos -->
       <div class="rose-card overflow-hidden reveal-up">
         <table class="rose-table w-full text-left"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
@@ -746,228 +474,13 @@
       </div>
     </div>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <!-- Preventivos -->
-      <div class="rose-card overflow-hidden reveal-up">
-        <table class="rose-table w-full text-left"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
-          <thead><tr><th colspan="3" class="text-center tracking-[0.3em]">Preventivos</th></tr>
-            <tr class="sub"><td class="sub">Produto</td><td class="sub">Finalidade</td><td class="sub">Periodicidade</td></tr></thead>
-          <tbody>
-            <tr><td>ProHeart</td><td class="text-muted">Preventivo injetável de dirofilariose, o verme do coração</td><td>Anual</td></tr>
-            <tr><td>Bravecto 365</td><td class="text-muted">Preventivo de ectoparasitas de longa duração: pulgas e carrapatos</td><td>Anual</td></tr>
-            <tr><td>Vermifugação</td><td class="text-muted">Controle de endoparasitas, conforme peso, idade e ambiente</td><td>Conforme orientação</td></tr>
-          </tbody>
-        </table>
-        <p class="text-xs text-muted font-ui leading-relaxed px-5 py-4 border-t border-champagne-200">
-          Registre o produto utilizado e a data de aplicação na carteira de saúde. Preventivos em dia protegem o seu pet e também a sua família.
-        </p>
-      </div>
-
-      <!-- Orientações importantes -->
-      <div class="rose-card p-7 md:p-9 reveal-up bg-elevated">
-        <div class="rose-divider text-xs tracking-[0.25em] text-copper uppercase mb-6 font-ui font-medium">
-          <span>Orientações importantes</span>
-        </div>
-        <ul class="space-y-4 text-sm md:text-base text-cream font-ui leading-relaxed">
-          <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Vacine apenas animais saudáveis e previamente avaliados pelo médico veterinário.</li>
-          <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Respeite os intervalos entre as doses: protocolo incompleto não protege.</li>
-          <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Em caso de apatia, inchaço no local, vômito ou coceira após a vacina, entre em contato.</li>
-          <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Guarde a carteira de saúde: ela é o histórico do seu pet.</li>
-          <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>O protocolo vacinal pediátrico é fundamental para uma imunidade sólida e duradoura.</li>
-        </ul>
-        <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
-           class="mt-8 inline-flex items-center gap-3 text-xs tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-6 py-3.5 rounded-full font-ui font-medium transition-all duration-500">
-          <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon>
-          Tirar dúvidas no WhatsApp
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- ============================================================
-     QUEM CUIDA (perfil da Dra. Lorena; o JS aceita 1 ou mais pessoas)
-     ============================================================ -->
-<section id="equipe" class="relative bg-elevated border-y border-copper/10">
-  <div class="sticky top-0 min-h-screen w-full flex flex-col md:flex-row items-center px-6 md:px-12 overflow-hidden py-24 md:py-0 max-w-7xl mx-auto gap-10">
-    <div class="w-full md:w-1/2 flex flex-col justify-center relative z-20 md:pr-16">
-      <div class="text-xs tracking-[0.25em] text-copper uppercase mb-6 flex items-center gap-4 font-ui font-medium">
-        <span class="w-8 h-[1px] bg-copper"></span>
-        Quem cuida
-      </div>
-      <h2 class="font-display text-4xl md:text-6xl tracking-tight font-normal mb-8 md:mb-12 text-cream leading-[1.05]">
-        A médica<br><i class="text-copper">veterinária</i>
-      </h2>
-      <div class="relative min-h-[260px] w-full" id="team-texts">
-        <div class="team-text absolute top-0 left-0 w-full flex flex-col justify-start opacity-0">
-          <h3 class="font-script text-5xl md:text-7xl mb-3 text-copper leading-none">Lorena Siqueira</h3>
-          <p class="text-xs md:text-sm tracking-[0.3em] uppercase text-muted mb-5 font-display">Médica Veterinária · CRMV-RJ 18798</p>
-          <p class="text-base md:text-lg text-muted leading-relaxed font-ui max-w-md mb-4">
-            Clínica de cães e gatos com foco em medicina preventiva: vacinação, controle de parasitas e acompanhamento ao longo da vida do animal.
-          </p>
-          <p class="text-base text-muted leading-relaxed font-ui max-w-md">
-            Atendimento particular, com carteira de saúde, receituário e orientação clara para o tutor em cada etapa.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full md:w-1/2 flex items-center justify-center relative z-10">
-      <div class="relative w-[280px] md:w-full max-w-[440px] aspect-[3/4] overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(201,83,95,0.18)] group">
-        <div class="absolute inset-0 z-40 border border-copper/20 rounded-2xl pointer-events-none"></div>
-        <div class="team-img-wrapper absolute inset-0 z-30 origin-top">
-          <img src="https://picsum.photos/seed/lorena-equipe-1/900/1200" alt="Dra. Lorena Siqueira" class="w-full h-full object-cover team-img">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- ============================================================
-     DEPOIMENTOS (seção fixa durante a rolagem, uma citação por vez)
-     Para adicionar: copie um .testi-item. O contador e a barra se
-     ajustam sozinhos ao número de itens.
-     ============================================================ -->
-<section id="depoimentos" class="relative bg-bg overflow-hidden">
-  <div class="testi-container relative h-screen w-full flex items-center justify-center">
-    <div class="absolute inset-0 z-0 flex items-center justify-center pointer-events-none opacity-50" aria-hidden="true">
-      <div class="w-[80vw] h-[80vw] md:w-[50vw] md:h-[50vw] rounded-full testi-bg-glow blur-3xl mix-blend-screen"
-           style="background: radial-gradient(circle, rgba(193,127,89,0.15) 0%, transparent 70%);"></div>
-    </div>
-
-    <div class="absolute top-24 md:top-32 left-6 md:left-12 z-20 testi-title">
-      <div class="text-xs tracking-[0.2em] text-copper uppercase mb-4 font-ui flex items-center gap-4">
-        <span class="w-8 h-[1px] bg-copper"></span>
-        Tutores
-      </div>
-      <h2 class="font-display text-4xl md:text-5xl tracking-tight text-cream">
-        Quem já<br><i class="text-copper-light">passou por aqui</i>
-      </h2>
-    </div>
-
-    <div class="relative z-10 w-full max-w-5xl mx-auto px-6 md:px-12 h-full flex items-center justify-center">
-      <div class="testi-item absolute inset-x-0 top-44 md:top-56 bottom-28 flex flex-col items-center justify-center text-center opacity-0 pointer-events-none">
-        <iconify-icon icon="solar:quote-right-bold-duotone" class="text-4xl md:text-6xl text-copper/20 mb-6"></iconify-icon>
-        <p class="font-display text-2xl md:text-4xl lg:text-5xl tracking-tight leading-[1.2] text-cream mb-10 max-w-4xl testi-quote">
-          "Pela primeira vez saí de uma consulta entendendo exatamente o que estava acontecendo com a Nina."
-        </p>
-        <div class="testi-author flex flex-col items-center gap-3">
-          <img src="https://picsum.photos/seed/lorena-tutor-1/200/200" class="w-14 h-14 rounded-full object-cover border border-copper/30 grayscale" alt="Maria C.">
-          <span class="text-sm tracking-widest uppercase text-copper-light font-ui">Maria C.</span>
-          <span class="text-xs text-muted font-ui">Tutora da Nina</span>
-        </div>
-      </div>
-
-      <div class="testi-item absolute inset-x-0 top-44 md:top-56 bottom-28 flex flex-col items-center justify-center text-center opacity-0 pointer-events-none">
-        <iconify-icon icon="solar:quote-right-bold-duotone" class="text-4xl md:text-6xl text-sage/20 mb-6"></iconify-icon>
-        <p class="font-display text-2xl md:text-4xl lg:text-5xl tracking-tight leading-[1.2] text-cream mb-10 max-w-4xl testi-quote">
-          "Atendimento em casa, sem estresse para o Thor. Ela se sentou no chão com ele antes de qualquer exame."
-        </p>
-        <div class="testi-author flex flex-col items-center gap-3">
-          <img src="https://picsum.photos/seed/lorena-tutor-2/200/200" class="w-14 h-14 rounded-full object-cover border border-sage/30 grayscale" alt="João P.">
-          <span class="text-sm tracking-widest uppercase text-sage font-ui">João P.</span>
-          <span class="text-xs text-muted font-ui">Tutor do Thor</span>
-        </div>
-      </div>
-
-      <div class="testi-item absolute inset-x-0 top-44 md:top-56 bottom-28 flex flex-col items-center justify-center text-center opacity-0 pointer-events-none">
-        <iconify-icon icon="solar:quote-right-bold-duotone" class="text-4xl md:text-6xl text-copper-light/20 mb-6"></iconify-icon>
-        <p class="font-display text-2xl md:text-4xl lg:text-5xl tracking-tight leading-[1.2] text-cream mb-10 max-w-4xl testi-quote">
-          "Cuidado, ciência e honestidade. Recomendo de olhos fechados."
-        </p>
-        <div class="testi-author flex flex-col items-center gap-3">
-          <img src="https://picsum.photos/seed/lorena-tutor-3/200/200" class="w-14 h-14 rounded-full object-cover border border-copper-light/30 grayscale" alt="Ana L.">
-          <span class="text-sm tracking-widest uppercase text-copper-light font-ui">Ana L.</span>
-          <span class="text-xs text-muted font-ui">Tutora da Mel e do Fred</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="absolute bottom-20 md:bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-6 z-20 testi-progress">
-      <div class="h-[1px] w-16 md:w-24 bg-copper/20 relative overflow-hidden">
-        <div class="absolute top-0 left-0 h-full bg-copper w-0 testi-progress-bar"></div>
-      </div>
-      <span class="text-xs text-muted tracking-widest font-ui testi-counter">01 / 03</span>
-    </div>
-  </div>
-</section>
-
-    <!-- ============================================================
-     ATENDIMENTO PARTICULAR (texto fixo à esquerda, cartões à direita)
-     Sem valores: o contato é feito pelo WhatsApp.
-     ============================================================ -->
-<section id="atendimento" class="py-24 md:py-32 bg-bg relative z-10">
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] max-w-[100vw] h-[800px] rounded-full blur-3xl pointer-events-none"
-       style="background: radial-gradient(circle, rgba(240,211,213,0.5) 0%, transparent 70%);" aria-hidden="true"></div>
-
-  <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10 flex flex-col lg:flex-row items-stretch gap-16 lg:gap-24">
-    <div class="w-full lg:w-5/12 relative">
-      <div class="sticky top-32 pt-10 pb-10 plan-sticky-text">
-        <div class="text-xs tracking-[0.25em] text-copper uppercase mb-8 font-ui font-medium flex items-center gap-4">
-          <span class="w-8 h-[1px] bg-copper"></span>
-          Atendimento particular
-        </div>
-        <h2 class="font-display text-4xl md:text-5xl lg:text-6xl tracking-tight font-normal mb-8 leading-[1.05] text-cream">
-          Como funciona<br><i class="text-copper">o atendimento</i>
-        </h2>
-        <p class="text-lg text-muted font-ui leading-relaxed mb-10 max-w-md">
-          O primeiro contato é pelo WhatsApp. Conte sobre o seu animal e a necessidade do momento, e a Dra. Lorena orienta o melhor caminho: consulta, vacinação, preventivos ou acompanhamento.
-        </p>
-        <div class="hidden lg:flex flex-col justify-between relative pl-6 border-l border-copper/20 plan-nav h-40">
-          <div class="plan-indicator absolute left-0 top-0 w-[2px] h-[33.33%] bg-copper -translate-x-[1px]"></div>
-          <div class="text-xs uppercase tracking-widest text-muted plan-nav-item font-ui">Consulta</div>
-          <div class="text-xs uppercase tracking-widest text-muted plan-nav-item font-ui">Vacinas e preventivos</div>
-          <div class="text-xs uppercase tracking-widest text-muted plan-nav-item font-ui">Acompanhamento</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="w-full lg:w-7/12 flex flex-col gap-10 lg:gap-16 pt-10 pb-10 plan-cards">
-      <div class="plan-card relative p-8 md:p-12 border rounded-2xl border-champagne-200 bg-bg transition-all duration-700 glow-surface overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(201,83,95,0.16)]">
-        
-        <div class="relative z-10 flex flex-col gap-8">
-          <div class="border-b border-champagne-200 pb-6">
-            <h3 class="text-2xl md:text-3xl font-display font-normal mb-2 text-cream">Consulta</h3>
-            <p class="text-sm text-muted font-ui">Avaliação completa de cães e gatos.</p>
-          </div>
-          <div class="flex flex-col md:flex-row gap-8 items-start justify-between">
-            <ul class="space-y-3 text-sm text-muted flex-1 font-ui"><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Anamnese e exame clínico</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Orientação sobre rotina, alimentação e prevenção</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Receituário quando necessário</li></ul>
-            <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener" class="w-full md:w-auto inline-flex items-center justify-center gap-3 py-3.5 px-7 border border-copper/40 text-copper hover:bg-copper hover:text-white text-xs tracking-widest uppercase transition-all duration-500 font-ui font-medium rounded-full flex-shrink-0">
-              <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon><span>Pedir informações</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="plan-card relative p-8 md:p-12 border rounded-2xl border-copper bg-bg shadow-[0_12px_40px_rgba(201,83,95,0.12)] transition-all duration-700 glow-surface overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(201,83,95,0.16)]">
-        <div class="absolute top-0 right-0 bg-copper text-white text-[10px] font-medium tracking-widest uppercase px-8 py-2 translate-x-[30%] translate-y-[50%] rotate-45 font-ui z-20 shadow-lg">Mais procurado</div>
-        <div class="relative z-10 flex flex-col gap-8">
-          <div class="border-b border-champagne-200 pb-6">
-            <h3 class="text-2xl md:text-3xl font-display font-normal mb-2 text-cream">Vacinas e preventivos</h3>
-            <p class="text-sm text-muted font-ui">Protocolo individualizado para cada paciente.</p>
-          </div>
-          <div class="flex flex-col md:flex-row gap-8 items-start justify-between">
-            <ul class="space-y-3 text-sm text-muted flex-1 font-ui"><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Avaliação pré-vacinal incluída</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Polivalente, antirrábica, gripe canina e giárdia</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Controle de pulgas, carrapatos, vermes e dirofilariose</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Registro na carteira de saúde</li></ul>
-            <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener" class="w-full md:w-auto inline-flex items-center justify-center gap-3 py-3.5 px-7 bg-copper text-white hover:bg-copper-light text-xs tracking-widest uppercase transition-all duration-500 font-ui font-medium rounded-full flex-shrink-0">
-              <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon><span>Pedir informações</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="plan-card relative p-8 md:p-12 border rounded-2xl border-champagne-200 bg-bg transition-all duration-700 glow-surface overflow-hidden group hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(201,83,95,0.16)]">
-        
-        <div class="relative z-10 flex flex-col gap-8">
-          <div class="border-b border-champagne-200 pb-6">
-            <h3 class="text-2xl md:text-3xl font-display font-normal mb-2 text-cream">Acompanhamento</h3>
-            <p class="text-sm text-muted font-ui">Para quem quer presença contínua.</p>
-          </div>
-          <div class="flex flex-col md:flex-row gap-8 items-start justify-between">
-            <ul class="space-y-3 text-sm text-muted flex-1 font-ui"><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Retornos e reavaliações</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Lembretes de revacinação e preventivos</li><li class="flex items-start gap-3"><iconify-icon icon="solar:check-circle-linear" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>Canal direto com a médica veterinária</li></ul>
-            <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener" class="w-full md:w-auto inline-flex items-center justify-center gap-3 py-3.5 px-7 border border-copper/40 text-copper hover:bg-copper hover:text-white text-xs tracking-widest uppercase transition-all duration-500 font-ui font-medium rounded-full flex-shrink-0">
-              <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon><span>Pedir informações</span>
-            </a>
-          </div>
-        </div>
-      </div>
+    <div class="rose-card p-6 md:p-8 reveal-up bg-elevated">
+      <div class="rose-divider text-xs tracking-[0.25em] text-copper uppercase mb-5 font-ui font-medium"><span>Orientações importantes</span></div>
+      <ul class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-cream font-ui leading-relaxed">
+        <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Vacine apenas animais saudáveis, avaliados pela médica veterinária.</li>
+        <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Respeite os intervalos entre as doses: protocolo incompleto não protege.</li>
+        <li class="flex items-start gap-3"><iconify-icon icon="solar:heart-bold" class="text-copper-light text-base mt-1 flex-shrink-0"></iconify-icon>Preventivos em dia protegem o seu pet e também a sua família.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -975,117 +488,39 @@
   </main>
 
   <!-- ============================================================
-     CONTATO + RODAPÉ (formulário grava numa planilha via Apps Script)
+     CONTATO + RODAPÉ: o único contato é o WhatsApp
      ============================================================ -->
-<footer id="contato" class="bg-elevated pt-24 md:pt-32 pb-10 relative overflow-hidden border-t border-copper/10">
+<footer id="contato" class="bg-elevated pt-20 md:pt-28 pb-8 relative overflow-hidden border-t border-copper/10">
   <div class="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-28 mb-20 border-b border-copper/10 pb-20 reveal-up">
-      <!-- Formulário -->
-      <div>
+    <div class="flex flex-col md:flex-row items-center gap-12 md:gap-20 mb-16 border-b border-copper/10 pb-16 reveal-up">
+      <div class="w-full md:w-7/12">
         <div class="text-xs tracking-[0.25em] text-copper uppercase mb-6 flex items-center gap-4 font-ui font-medium">
           <span class="w-8 h-[1px] bg-copper"></span>
           Contato
         </div>
         <h2 class="font-display text-4xl md:text-5xl tracking-tight mb-5 leading-[1.05] text-cream">
-          Vamos<br><i class="text-copper">conversar</i>
+          Fale com a<br><i class="text-copper">Dra. Lorena</i>
         </h2>
-        <p class="text-sm text-muted mb-8 max-w-md font-ui leading-relaxed">
-          O jeito mais rápido é o WhatsApp. Se preferir, deixe seus dados e conte um pouco sobre o seu animal que a Dra. Lorena responde pessoalmente.
+        <p class="text-base text-muted mb-8 max-w-lg font-ui leading-relaxed">
+          O atendimento é agendado pelo WhatsApp. Conte sobre o seu animal e a necessidade do momento, e a Dra. Lorena orienta o melhor caminho: consulta, vacinação, preventivos ou acompanhamento.
         </p>
         <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
-           class="inline-flex items-center gap-3 text-xs tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-7 py-4 rounded-full font-ui font-medium transition-all duration-500 mb-12 shadow-[0_8px_24px_rgba(201,83,95,0.25)]">
+           class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-9 py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.25)] btn-breathing">
           <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
-          (22) 98858-7898
+          Falar no WhatsApp
         </a>
-
-        <form id="contact-form" class="space-y-8 max-w-lg relative" novalidate>
-          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="relative">
-              <input type="text" id="f-name" name="name" required placeholder=" " class="peer w-full bg-transparent border-b border-copper/30 py-3 text-sm focus:outline-none focus:border-copper transition-colors text-cream font-ui">
-              <label for="f-name" class="field-label font-ui">Seu nome</label>
-            </div>
-            <div class="relative">
-              <input type="email" id="f-email" name="email" placeholder=" " class="peer w-full bg-transparent border-b border-copper/30 py-3 text-sm focus:outline-none focus:border-copper transition-colors text-cream font-ui">
-              <label for="f-email" class="field-label font-ui">E-mail</label>
-            </div>
-          </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="relative">
-              <input type="tel" id="f-phone" name="phone" placeholder=" " class="peer w-full bg-transparent border-b border-copper/30 py-3 text-sm focus:outline-none focus:border-copper transition-colors text-cream font-ui">
-              <label for="f-phone" class="field-label font-ui">WhatsApp</label>
-            </div>
-            <div class="relative group/select">
-              <select id="f-subject" name="subject" required class="peer w-full bg-transparent border-b border-copper/30 py-3 text-sm text-cream focus:outline-none focus:border-copper transition-colors appearance-none cursor-pointer font-ui">
-                <option value="" disabled selected hidden></option>
-                <option value="consulta">Agendar consulta</option>
-                <option value="vacinacao">Vacinação e preventivos</option>
-                <option value="acompanhamento">Acompanhamento</option>
-                <option value="outro">Outro assunto</option>
-              </select>
-              <label for="f-subject" class="field-label font-ui">Assunto</label>
-              <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-0 top-4 text-muted pointer-events-none group-hover/select:text-copper transition-colors"></iconify-icon>
-            </div>
-          </div>
-          <div class="relative">
-            <textarea id="f-message" name="message" rows="2" placeholder=" " class="peer w-full bg-transparent border-b border-copper/30 py-3 text-sm focus:outline-none focus:border-copper transition-colors text-cream font-ui resize-none"></textarea>
-            <label for="f-message" class="field-label font-ui">Conte sobre o seu animal</label>
-          </div>
-          <label class="custom-checkbox flex items-start gap-3 cursor-pointer mt-8">
-            <div class="relative mt-0.5">
-              <input type="checkbox" name="consent" class="sr-only" required>
-              <div class="w-4 h-4 border border-copper/40 rounded-[3px] transition-colors flex items-center justify-center bg-white">
-                <svg class="w-2.5 h-2.5 text-white opacity-0 transform scale-50 transition-all duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-            </div>
-            <span class="text-xs text-muted leading-tight font-ui">Autorizo o contato por e-mail ou WhatsApp sobre a minha mensagem.</span>
-          </label>
-          <p class="form-error text-xs text-copper font-ui hidden"></p>
-          <button type="submit" class="mt-8 flex items-center gap-3 text-xs tracking-widest uppercase text-cream hover:text-copper transition-colors group/btn font-ui font-medium">
-            <span>Enviar mensagem</span>
-            <div class="w-8 h-8 rounded-full border border-copper/40 flex items-center justify-center group-hover/btn:bg-copper/10 group-hover/btn:border-copper transition-all duration-500">
-              <iconify-icon icon="solar:arrow-right-linear" class="text-lg transition-transform group-hover/btn:translate-x-1"></iconify-icon>
-            </div>
-          </button>
-          <div class="success-message absolute inset-0 bg-elevated flex flex-col items-center justify-center text-center opacity-0 pointer-events-none transition-all duration-500 transform scale-95 z-10">
-            <iconify-icon icon="solar:check-circle-linear" class="text-4xl text-copper mb-4"></iconify-icon>
-            <h3 class="font-display text-2xl text-cream mb-2 tracking-tight">Mensagem recebida</h3>
-            <p class="text-sm text-muted font-ui">Em breve a Dra. Lorena entra em contato.</p>
-          </div>
-        </form>
+        <p class="text-sm text-muted font-ui mt-5">(22) 98858-7898 · Rio de Janeiro e Niterói, RJ</p>
       </div>
-
-      <!-- Links e contato -->
-      <div class="flex flex-col md:flex-row gap-14 md:gap-20 md:justify-end mt-12 md:mt-0">
-        <div class="space-y-6">
-          <h4 class="text-xs tracking-[0.25em] text-copper uppercase mb-8 font-ui font-medium">Navegação</h4>
-          <ul class="space-y-4 text-sm text-muted font-ui">
-            <li><a href="#sobre" class="hover:text-copper transition-colors">Sobre</a></li>
-            <li><a href="#servicos" class="hover:text-copper transition-colors">Serviços</a></li>
-            <li><a href="#protocolos" class="hover:text-copper transition-colors">Vacinas e preventivos</a></li>
-            <li><a href="#atendimento" class="hover:text-copper transition-colors">Atendimento</a></li>
-          </ul>
-        </div>
-        <div class="space-y-6">
-          <h4 class="text-xs tracking-[0.25em] text-copper uppercase mb-8 font-ui font-medium">Contato</h4>
-          <ul class="space-y-4 text-sm text-muted font-ui">
-            <li>
-              <p class="text-cream mb-1 font-medium">Onde</p>
-              <p>Atendimento particular<br>Rio de Janeiro e Niterói, RJ</p>
-            </li>
-            <li class="pt-4">
-              <p class="text-cream mb-1 font-medium">WhatsApp</p>
-              <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener" class="hover:text-copper transition-colors">(22) 98858-7898</a>
-            </li>
-            
-          </ul>
+      <div class="w-full md:w-5/12 flex justify-center md:justify-end">
+        <div class="w-full max-w-[360px] aspect-[3/4] rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_20px_50px_rgba(201,83,95,0.15)]">
+          <img src="assets/img/lorena-chihuahua.jpg" alt="Dra. Lorena Siqueira com um chihuahua" class="w-full h-full object-cover">
         </div>
       </div>
     </div>
 
-    <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-muted reveal-up">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-5 text-xs text-muted reveal-up">
       <div class="font-script text-3xl text-copper">Lorena Siqueira</div>
-      <div class="flex items-center gap-2 font-display tracking-[0.25em] uppercase text-[11px] text-muted">
+      <div class="flex items-center gap-2 font-display tracking-[0.25em] uppercase text-[11px] text-muted text-center">
         <iconify-icon icon="solar:heart-bold" class="text-copper-light"></iconify-icon>
         Médica Veterinária · CRMV-RJ 18798
       </div>
@@ -1095,7 +530,7 @@
 </footer>
 
 
-  <script>window.SITE = {"site": {"name": "Lorena Siqueira", "tagline": "Médica Veterinária · CRMV-RJ 18798", "description": "Atendimento veterinário particular para cães e gatos: consultas, vacinação, controle de parasitas e acompanhamento. Cada paciente é único e merece o melhor cuidado.", "lang": "pt-BR", "faviconUrl": "", "domain": "", "canonicalUrl": "https://vrnepo.github.io/Site-Lorena/", "year": "2026"}, "contact": {"whatsapp": "5522988587898", "whatsappMessage": "Olá, Dra. Lorena! Vi o seu site e gostaria de informações sobre o atendimento particular.", "email": "", "phone": "(22) 98858-7898", "addressLine1": "Atendimento particular", "addressLine2": "Rio de Janeiro e Niterói, RJ", "instagram": "", "notifyEmail": "", "sheetId": "", "formEndpoint": "https://script.google.com/macros/s/AKfycbxz2wUc4zkV2h2LtaVFkycCFjSvRaCwTESrL9kCb-OVP8a0fDjYE8DNTpGtr0RjDRMhSA/exec"}, "hero": {"titleLine1": "Lorena", "titleLine2": "Siqueira", "credential": "Médica Veterinária", "crmv": "CRMV-RJ 18798", "subtitle": "Cada paciente é único e merece o melhor cuidado.", "ctaLabel": "Falar no WhatsApp", "ctaHref": "https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."}};</script>
+  <script>window.SITE = {"site": {"name": "Lorena Siqueira", "tagline": "Médica Veterinária · CRMV-RJ 18798", "description": "Atendimento veterinário particular para cães e gatos: consultas, vacinação, controle de parasitas e acompanhamento. Cada paciente é único e merece o melhor cuidado.", "lang": "pt-BR", "faviconUrl": "", "domain": "", "canonicalUrl": "https://vrnepo.github.io/Site-Lorena/", "year": "2026"}, "contact": {"whatsapp": "5522988587898", "whatsappMessage": "Olá, Dra. Lorena! Vi o seu site e gostaria de informações sobre o atendimento particular.", "email": "", "phone": "(22) 98858-7898", "addressLine1": "Atendimento particular", "addressLine2": "Rio de Janeiro e Niterói, RJ", "regionsRio": "Zona Sul, Centro, Tijuca e Barra da Tijuca", "regionsNiteroi": "Icaraí, Santa Rosa, Centro e Região Oceânica", "regionsNote": "Outros bairros sob consulta, conforme a agenda.", "instagram": "", "notifyEmail": "", "sheetId": "", "formEndpoint": "https://script.google.com/macros/s/AKfycbxz2wUc4zkV2h2LtaVFkycCFjSvRaCwTESrL9kCb-OVP8a0fDjYE8DNTpGtr0RjDRMhSA/exec"}, "hero": {"titleLine1": "Lorena", "titleLine2": "Siqueira", "credential": "Médica Veterinária", "crmv": "CRMV-RJ 18798", "subtitle": "Cada paciente é único e merece o melhor cuidado.", "ctaLabel": "Falar no WhatsApp", "ctaHref": "https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."}};</script>
   <script>
 (function () {
   'use strict';
@@ -1154,31 +589,6 @@
     const hint = $('#scroll-hint');
     if (hint) gsap.to(hint, { autoAlpha: 0, scrollTrigger: { trigger: 'body', start: '80px top', toggleActions: 'play none none reverse' } });
 
-    const toggle = $('#menu-toggle');
-    const menu = $('#mobile-menu');
-    if (toggle && menu) {
-      const setOpen = (open) => {
-        menu.classList.toggle('open', open);
-        document.body.classList.toggle('menu-open', open);
-        toggle.setAttribute('aria-expanded', String(open));
-        toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
-      };
-      toggle.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
-      $$('a', menu).forEach(a => a.addEventListener('click', () => setOpen(false)));
-    }
-
-    // Marca o link ativo conforme a seção visível
-    const links = $$('#navbar .nav-link');
-    links.forEach(link => {
-      const id = link.getAttribute('href');
-      const section = id && id.startsWith('#') ? $(id) : null;
-      if (!section) return;
-      ScrollTrigger.create({
-        trigger: section, start: 'top 50%', end: 'bottom 50%',
-        onToggle: self => link.classList.toggle('active', self.isActive)
-      });
-    });
-
     // Rolagem suave para âncoras (sem plugin extra)
     document.addEventListener('click', e => {
       const a = e.target.closest('a[href^="#"]');
@@ -1226,163 +636,7 @@
   }
 
   /* ============================================================
-     5. SERVIÇOS (abas por categoria)
-     ============================================================ */
-  function services() {
-    const tabs = $$('.service-tab');
-    if (!tabs.length) return;
-    const ACTIVE = ['active', 'bg-copper/10', 'border-copper/30', 'text-cream'];
-    const IDLE = ['text-muted', 'border-transparent'];
-    let busy = false;
-
-    tabs.forEach(tab => tab.addEventListener('click', () => {
-      if (busy || tab.classList.contains('active')) return;
-      busy = true;
-      tabs.forEach(t => { t.classList.remove(...ACTIVE); t.classList.add(...IDLE); t.setAttribute('aria-selected', 'false'); });
-      tab.classList.remove(...IDLE); tab.classList.add(...ACTIVE); tab.setAttribute('aria-selected', 'true');
-
-      const next = $('.service-list[data-category="' + tab.dataset.category + '"]');
-      const current = $('.service-list.active');
-      const show = () => {
-        if (!next) { busy = false; return; }
-        next.classList.remove('hidden'); next.classList.add('flex', 'active');
-        gsap.fromTo(next, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out', onComplete: () => { busy = false; ScrollTrigger.refresh(); } });
-      };
-      if (current) {
-        gsap.to(current, { opacity: 0, y: -10, duration: 0.3, ease: 'power2.in', onComplete: () => {
-          current.classList.remove('active', 'flex'); current.classList.add('hidden'); show();
-        } });
-      } else show();
-    }));
-  }
-
-  /* ============================================================
-     6. EQUIPE (texto fixo + imagens reveladas por clip-path, N itens)
-     ============================================================ */
-  function team() {
-    const section = $('#equipe');
-    if (!section) return;
-    const texts = $$('.team-text'), wraps = $$('.team-img-wrapper'), imgs = $$('.team-img');
-    const n = Math.min(texts.length, wraps.length);
-    if (!n) return;
-
-    section.style.height = n === 1 ? 'auto' : ((n + 1) * 100) + 'vh';
-
-    if (reduceMotion || n === 1) {
-      gsap.set(texts[0], { opacity: 1, y: 0 });
-      wraps.slice(1).forEach(w => gsap.set(w, { autoAlpha: 0 }));
-      if (n === 1 && !reduceMotion) {
-        gsap.set(wraps[0], { clipPath: 'inset(100% 0% 0% 0%)' }); gsap.set(imgs[0], { scale: 1.3 }); gsap.set(texts[0], { opacity: 0, y: 40 });
-        ScrollTrigger.create({ trigger: section, start: 'top 75%', once: true, onEnter: () => {
-          gsap.to(wraps[0], { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut' });
-          gsap.to(imgs[0], { scale: 1.02, duration: 2, ease: 'expo.out' });
-          gsap.to(texts[0], { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.3 });
-        } });
-      }
-      return;
-    }
-
-    gsap.set(texts, { opacity: 0, y: 40 });
-    gsap.set(imgs.slice(1), { scale: 1.2 });
-    gsap.set(wraps[0], { clipPath: 'inset(100% 0% 0% 0%)' });
-    gsap.set(imgs[0], { scale: 1.4 });
-
-    ScrollTrigger.create({ trigger: section, start: 'top 75%', once: true, onEnter: () => {
-      gsap.to(wraps[0], { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut' });
-      gsap.to(imgs[0], { scale: 1.05, duration: 2, ease: 'expo.out' });
-      gsap.to(texts[0], { opacity: 1, y: 0, duration: 1.2, ease: 'power3.out', delay: 0.4 });
-    } });
-
-    const tl = gsap.timeline({ scrollTrigger: { trigger: section, start: 'top top', end: 'bottom bottom', scrub: 1 } });
-    for (let i = 0; i < n - 1; i++) {
-      tl.to(texts[i], { opacity: 0, y: -40, duration: 1, ease: 'power2.inOut' })
-        .to(wraps[i], { clipPath: 'inset(0% 0% 100% 0%)', duration: 1, ease: 'power2.inOut' }, '<')
-        .to(texts[i + 1], { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }, '<')
-        .to(imgs[i + 1], { scale: 1.05, duration: 1, ease: 'power2.out' }, '<')
-        .to({}, { duration: 0.3 });
-    }
-  }
-
-  /* ============================================================
-     7. DEPOIMENTOS (seção fixa, um depoimento por vez)
-     ============================================================ */
-  function testimonials() {
-    const section = $('#depoimentos');
-    if (!section) return;
-    const items = $$('.testi-item', section);
-    const bar = $('.testi-progress-bar', section), counter = $('.testi-counter', section);
-    const title = $('.testi-title', section), progress = $('.testi-progress', section), glow = $('.testi-bg-glow', section);
-    const pad = n => String(n).padStart(2, '0');
-    if (counter) counter.textContent = pad(1) + ' / ' + pad(items.length);
-
-    if (reduceMotion || !items.length) {
-      items.forEach((it, i) => gsap.set(it, { opacity: i === 0 ? 1 : 0 }));
-      if (bar) bar.style.width = (100 / Math.max(items.length, 1)) + '%';
-      return;
-    }
-
-    const colors = ['rgba(201,83,95,0.14)', 'rgba(217,124,134,0.14)', 'rgba(232,185,189,0.2)'];
-    gsap.set(items, { opacity: 0, y: 60, scale: 0.95 });
-    gsap.set([title, progress], { opacity: 0, y: 20 });
-
-    const tl = gsap.timeline({ scrollTrigger: { trigger: section, start: 'top top', end: '+=' + (items.length * 1000), pin: true, scrub: 1 } });
-    tl.to([title, progress], { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0);
-
-    items.forEach((item, i) => {
-      const quote = $('.testi-quote', item), author = $('.testi-author', item), icon = $('iconify-icon', item);
-      const sub = gsap.timeline();
-      sub.to(item, { opacity: 1, y: 0, scale: 1, duration: 1, ease: 'power3.out' }, 0)
-         .from(icon, { opacity: 0, scale: 0.5, rotation: -10, duration: 0.8, ease: 'back.out(1.5)' }, 0.2)
-         .from(quote, { opacity: 0, y: 20, duration: 0.8, ease: 'power2.out' }, 0.3)
-         .from(author, { opacity: 0, y: 20, duration: 0.8, ease: 'power2.out' }, 0.4)
-         .to(bar, { width: ((i + 1) / items.length * 100) + '%', duration: 1, ease: 'none' }, 0)
-         .add(() => {
-           if (counter) counter.textContent = pad(i + 1) + ' / ' + pad(items.length);
-           if (glow) gsap.to(glow, { background: 'radial-gradient(circle, ' + colors[i % colors.length] + ' 0%, transparent 70%)', duration: 0.5 });
-         }, 0.5);
-      tl.add(sub).to({}, { duration: 1.5 });
-      if (i < items.length - 1) tl.to(item, { opacity: 0, y: -40, scale: 1.05, duration: 1, ease: 'power2.in' });
-    });
-    tl.to([title, progress], { opacity: 0, y: -20, duration: 0.5, ease: 'power2.in' });
-  }
-
-  /* ============================================================
-     8. PLANOS (entrada dos cartões + índice sincronizado)
-     ============================================================ */
-  function plans() {
-    const section = $('#planos');
-    if (!section) return;
-    const cards = $$('.plan-card'), navItems = $$('.plan-nav-item'), indicator = $('.plan-indicator');
-    if (indicator && navItems.length) indicator.style.height = (100 / navItems.length) + '%';
-
-    let last = -1;
-    const activate = i => {
-      if (i === last) return; last = i;
-      navItems.forEach((item, j) => {
-        item.classList.toggle('text-copper', j === i); item.classList.toggle('font-medium', j === i);
-        item.classList.toggle('text-muted', j !== i);
-        gsap.to(item, { x: j === i ? 8 : 0, duration: 0.4, ease: 'power2.out', overwrite: 'auto' });
-      });
-      if (indicator) gsap.to(indicator, { top: (i * 100 / navItems.length) + '%', duration: 0.5, ease: 'power3.inOut', overwrite: 'auto' });
-    };
-    activate(0);
-
-    if (reduceMotion) return;
-
-    gsap.fromTo('.plan-sticky-text > *:not(.plan-nav)', { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: section, start: 'top 70%' } });
-    gsap.fromTo('.plan-nav', { opacity: 0, x: -20 },
-      { opacity: 1, x: 0, duration: 1, ease: 'power2.out', delay: 0.5, scrollTrigger: { trigger: section, start: 'top 70%' } });
-
-    cards.forEach((card, i) => {
-      gsap.fromTo(card, { y: 100, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 85%' } });
-      ScrollTrigger.create({ trigger: card, start: 'top 50%', end: 'bottom 50%', onEnter: () => activate(i), onEnterBack: () => activate(i) });
-    });
-  }
-
-  /* ============================================================
-     9. BRILHO QUE SEGUE O CURSOR (.glow-surface)
+     5. BRILHO QUE SEGUE O CURSOR (.glow-surface)
      ============================================================ */
   function glow() {
     $$('.glow-surface').forEach(el => el.addEventListener('mousemove', e => {
@@ -1393,51 +647,10 @@
   }
 
   /* ============================================================
-     10. FORMULÁRIO DE CONTATO → Apps Script (ou simulação local)
-     ============================================================ */
-  function contactForm() {
-    const form = $('#contact-form');
-    if (!form) return;
-    const errorEl = $('.form-error', form);
-    const showError = msg => { if (!errorEl) return; errorEl.textContent = msg; errorEl.classList.toggle('hidden', !msg); };
-
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      showError('');
-      const data = Object.fromEntries(new FormData(form).entries());
-      if (!data.name) return showError('Informe seu nome.');
-      if (!data.email && !data.phone) return showError('Informe um e-mail ou WhatsApp para resposta.');
-      if (!data.subject) return showError('Escolha um assunto.');
-      if (!data.consent) return showError('Marque a autorização de contato para continuar.');
-      delete data.consent;
-
-      const done = res => {
-        form.classList.remove('form-busy');
-        if (res && res.ok) { form.classList.add('form-success'); form.reset(); }
-        else showError((res && res.error) || 'Não foi possível enviar. Tente novamente ou use o WhatsApp.');
-      };
-      form.classList.add('form-busy');
-
-      const endpoint = window.SITE && SITE.contact && SITE.contact.formEndpoint;
-      if (window.google && google.script && google.script.run) {
-        // Site servido pelo próprio Apps Script
-        google.script.run.withSuccessHandler(done).withFailureHandler(() => done(null)).submitContact(data);
-      } else if (endpoint && location.protocol !== 'file:' && location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
-        // Site estático (GitHub Pages): POST sem cabeçalho de tipo = sem preflight CORS
-        fetch(endpoint, { method: 'POST', body: JSON.stringify(data) })
-          .then(r => r.json()).then(done).catch(() => done(null));
-      } else {
-        console.info('[preview] Formulário (não enviado, fora do Apps Script):', data);
-        setTimeout(() => done({ ok: true }), 600);
-      }
-    });
-  }
-
-  /* ============================================================
      BOOT
      ============================================================ */
   function boot() {
-    heroIntro(); navigation(); reveals(); about(); services(); team(); testimonials(); plans(); glow(); contactForm();
+    heroIntro(); navigation(); reveals(); about(); glow();
     // Imagens carregando depois mudam alturas; recalcula os gatilhos.
     window.addEventListener('load', () => setTimeout(() => ScrollTrigger.refresh(), 300));
   }
