@@ -186,6 +186,13 @@
   .rose-divider { display: flex; align-items: center; gap: 0.75rem; color: #E8B9BD; }
   .rose-divider::before, .rose-divider::after { content: ''; flex: 1; height: 1px; background: currentColor; }
   .rose-card { background: #fff; border: 1.5px solid #E8B9BD; border-radius: 14px; }
+  .rose-table { table-layout: fixed; width: 100%; }
+  .rose-table col.c1 { width: 27%; } .rose-table col.c2 { width: 45%; } .rose-table col.c3 { width: 28%; }
+  @media (max-width: 640px) {
+    .rose-table td { font-size: 0.78rem; padding: 0.6rem 0.5rem; }
+    .rose-table th { font-size: 0.65rem; padding: 0.5rem; }
+    .rose-table .sub { font-size: 0.6rem; letter-spacing: 0.08em; }
+  }
   .rose-table th { background: var(--copper); color: #fff; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.7rem; padding: 0.6rem 0.9rem; }
   .rose-table td { padding: 0.8rem 0.9rem; border-bottom: 1px solid #F0D3D5; vertical-align: top; font-size: 0.9rem; }
   .rose-table tr:nth-child(even) td { background: #FFF7F7; }
@@ -715,7 +722,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
       <!-- Gatos -->
       <div class="rose-card overflow-hidden reveal-up">
-        <table class="rose-table w-full text-left">
+        <table class="rose-table w-full text-left"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
           <thead><tr><th colspan="3" class="text-center tracking-[0.3em]">Gatos</th></tr>
             <tr class="sub"><td class="sub">Protocolo / vacina</td><td class="sub">Finalidade</td><td class="sub">Periodicidade</td></tr></thead>
           <tbody>
@@ -726,7 +733,7 @@
       </div>
       <!-- Cães -->
       <div class="rose-card overflow-hidden reveal-up">
-        <table class="rose-table w-full text-left">
+        <table class="rose-table w-full text-left"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
           <thead><tr><th colspan="3" class="text-center tracking-[0.3em]">Cães</th></tr>
             <tr class="sub"><td class="sub">Protocolo / vacina</td><td class="sub">Finalidade</td><td class="sub">Periodicidade</td></tr></thead>
           <tbody>
@@ -742,7 +749,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Preventivos -->
       <div class="rose-card overflow-hidden reveal-up">
-        <table class="rose-table w-full text-left">
+        <table class="rose-table w-full text-left"><colgroup><col class="c1"><col class="c2"><col class="c3"></colgroup>
           <thead><tr><th colspan="3" class="text-center tracking-[0.3em]">Preventivos</th></tr>
             <tr class="sub"><td class="sub">Produto</td><td class="sub">Finalidade</td><td class="sub">Periodicidade</td></tr></thead>
           <tbody>
