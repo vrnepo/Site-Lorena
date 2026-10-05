@@ -200,6 +200,27 @@
   .rose-table td:last-child { color: var(--copper); }
   .rose-table .sub { background: #F6E6E7; color: var(--copper); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
+  /* ---------- Lightbox: foto ampliada com fade ---------- */
+  .lightbox-img { cursor: zoom-in; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 10000; display: flex; align-items: center; justify-content: center;
+    padding: 1.25rem; background: rgba(251, 241, 242, 0.92); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    opacity: 0; pointer-events: none; transition: opacity 0.45s ease; cursor: zoom-out;
+  }
+  .lightbox.open { opacity: 1; pointer-events: auto; }
+  .lightbox img {
+    max-width: min(96vw, 1100px); max-height: 90vh; width: auto; height: auto; object-fit: contain;
+    border-radius: 16px; border: 1px solid #E8B9BD; box-shadow: 0 30px 80px rgba(201, 83, 95, 0.25);
+    transform: scale(0.96); transition: transform 0.45s var(--ease-out-expo);
+  }
+  .lightbox.open img { transform: scale(1); }
+  .lightbox-close {
+    position: absolute; top: 1rem; right: 1rem; width: 44px; height: 44px; border-radius: 9999px;
+    background: #fff; border: 1px solid #E8B9BD; color: var(--copper); display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; cursor: pointer;
+  }
+  body.lightbox-open { overflow: hidden; }
+
   /* ---------- Acessibilidade: menos movimento ---------- */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -362,22 +383,21 @@
           Medicina veterinária<br><i class="text-copper">com escuta</i>
         </h2>
         <p class="text-base md:text-lg text-muted font-ui leading-relaxed mb-5">
-          A Dra. Lorena Siqueira atende cães e gatos de forma particular, com tempo para ouvir a história de cada animal e da família. Toda consulta começa por uma avaliação completa, e o protocolo de vacinas e preventivos é individualizado para cada paciente.
+          A Dra. Lorena Siqueira atende cães e gatos de forma particular, com tempo para ouvir a história de cada paciente e da família. Toda consulta começa por uma avaliação completa e o protocolo é individualizado para cada pet.
         </p>
-
         <!-- Regiões de atendimento -->
         <div class="rose-card p-5 md:p-6 mt-6">
           <div class="rose-divider text-[11px] tracking-[0.25em] text-copper uppercase mb-4 font-ui font-medium">
             <span>Regiões de atendimento</span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm font-ui">
-            <div class="flex items-start gap-3">
-              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>
-              <div><p class="text-cream font-medium">Rio de Janeiro</p><p class="text-muted">Zona Sul, Centro, Tijuca e Barra da Tijuca</p></div>
+            <div class="flex items-center gap-3">
+              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl flex-shrink-0"></iconify-icon>
+              <p class="text-cream font-medium">Rio de Janeiro</p>
             </div>
-            <div class="flex items-start gap-3">
-              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl mt-0.5 flex-shrink-0"></iconify-icon>
-              <div><p class="text-cream font-medium">Niterói</p><p class="text-muted">Icaraí, Santa Rosa, Centro e Região Oceânica</p></div>
+            <div class="flex items-center gap-3">
+              <iconify-icon icon="solar:map-point-bold" class="text-copper text-xl flex-shrink-0"></iconify-icon>
+              <p class="text-cream font-medium">Niterói</p>
             </div>
           </div>
           <p class="text-xs text-muted font-ui mt-4">Outros bairros sob consulta, conforme a agenda.</p>
@@ -387,7 +407,7 @@
 
     <!-- Momentos -->
     <div class="grid grid-cols-3 gap-3 md:gap-6 reveal-up">
-      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-spitz.jpg" alt="Dra. Lorena com dois spitz" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
+      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-golden-quadrado.jpg" alt="Dra. Lorena com um golden retriever" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
       <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-filhotes.jpg" alt="Filhotes recém-nascidos nas mãos da Dra. Lorena" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
       <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-gato-selfie.jpg" alt="Dra. Lorena com uma gata" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
     </div>
@@ -530,7 +550,7 @@
 </footer>
 
 
-  <script>window.SITE = {"site": {"name": "Lorena Siqueira", "tagline": "Médica Veterinária · CRMV-RJ 18798", "description": "Atendimento veterinário particular para cães e gatos: consultas, vacinação, controle de parasitas e acompanhamento. Cada paciente é único e merece o melhor cuidado.", "lang": "pt-BR", "faviconUrl": "", "domain": "", "canonicalUrl": "https://vrnepo.github.io/Site-Lorena/", "year": "2026"}, "contact": {"whatsapp": "5522988587898", "whatsappMessage": "Olá, Dra. Lorena! Vi o seu site e gostaria de informações sobre o atendimento particular.", "email": "", "phone": "(22) 98858-7898", "addressLine1": "Atendimento particular", "addressLine2": "Rio de Janeiro e Niterói, RJ", "regionsRio": "Zona Sul, Centro, Tijuca e Barra da Tijuca", "regionsNiteroi": "Icaraí, Santa Rosa, Centro e Região Oceânica", "regionsNote": "Outros bairros sob consulta, conforme a agenda.", "instagram": "", "notifyEmail": "", "sheetId": "", "formEndpoint": "https://script.google.com/macros/s/AKfycbxz2wUc4zkV2h2LtaVFkycCFjSvRaCwTESrL9kCb-OVP8a0fDjYE8DNTpGtr0RjDRMhSA/exec"}, "hero": {"titleLine1": "Lorena", "titleLine2": "Siqueira", "credential": "Médica Veterinária", "crmv": "CRMV-RJ 18798", "subtitle": "Cada paciente é único e merece o melhor cuidado.", "ctaLabel": "Falar no WhatsApp", "ctaHref": "https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."}};</script>
+  <script>window.SITE = {"site": {"name": "Lorena Siqueira", "tagline": "Médica Veterinária · CRMV-RJ 18798", "description": "Atendimento veterinário particular para cães e gatos: consultas, vacinação, controle de parasitas e acompanhamento. Cada paciente é único e merece o melhor cuidado.", "lang": "pt-BR", "faviconUrl": "", "domain": "", "canonicalUrl": "https://vrnepo.github.io/Site-Lorena/", "year": "2026"}, "contact": {"whatsapp": "5522988587898", "whatsappMessage": "Olá, Dra. Lorena! Vi o seu site e gostaria de informações sobre o atendimento particular.", "email": "", "phone": "(22) 98858-7898", "addressLine1": "Atendimento particular", "addressLine2": "Rio de Janeiro e Niterói, RJ", "regionsNote": "Outros bairros sob consulta, conforme a agenda.", "instagram": "", "notifyEmail": "", "sheetId": "", "formEndpoint": "https://script.google.com/macros/s/AKfycbxz2wUc4zkV2h2LtaVFkycCFjSvRaCwTESrL9kCb-OVP8a0fDjYE8DNTpGtr0RjDRMhSA/exec"}, "hero": {"titleLine1": "Lorena", "titleLine2": "Siqueira", "credential": "Médica Veterinária", "crmv": "CRMV-RJ 18798", "subtitle": "Cada paciente é único e merece o melhor cuidado.", "ctaLabel": "Falar no WhatsApp", "ctaHref": "https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."}};</script>
   <script>
 (function () {
   'use strict';
@@ -647,10 +667,33 @@
   }
 
   /* ============================================================
+     6. LIGHTBOX (clique na foto → amplia com fade; clique/Esc fecha)
+     ============================================================ */
+  function lightbox() {
+    const imgs = $$('main img, footer img').filter(i => !i.closest('svg'));
+    if (!imgs.length) return;
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-label', 'Foto ampliada');
+    box.innerHTML = '<button class="lightbox-close" aria-label="Fechar">&times;</button><img alt="">';
+    document.body.appendChild(box);
+    const big = box.querySelector('img');
+    const open = src => { big.src = src; box.classList.add('open'); document.body.classList.add('lightbox-open'); };
+    const close = () => { box.classList.remove('open'); document.body.classList.remove('lightbox-open'); };
+    imgs.forEach(img => {
+      img.classList.add('lightbox-img');
+      img.addEventListener('click', e => { e.preventDefault(); open(img.currentSrc || img.src); });
+    });
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  }
+
+  /* ============================================================
      BOOT
      ============================================================ */
   function boot() {
-    heroIntro(); navigation(); reveals(); about(); glow();
+    heroIntro(); navigation(); reveals(); about(); glow(); lightbox();
     // Imagens carregando depois mudam alturas; recalcula os gatilhos.
     window.addEventListener('load', () => setTimeout(() => ScrollTrigger.refresh(), 300));
   }
