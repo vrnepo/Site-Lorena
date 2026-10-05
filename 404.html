@@ -129,7 +129,6 @@
   .mobile-menu.open { clip-path: inset(0 0 0% 0); }
   body.menu-open { overflow: hidden; }
 
-  .scroll-hint { text-shadow: 0 1px 8px rgba(255,255,255,0.9); }
 
   /* ---------- Botão "respirando" ---------- */
   .btn-breathing { position: relative; overflow: hidden; isolation: isolate; }
@@ -351,12 +350,15 @@
         <span>Falar no WhatsApp</span>
       </a>
     </div>
+
+    <!-- Dica "Saiba mais": logo abaixo do botão, só na abertura -->
+    <div id="scroll-hint" class="scroll-hint hero-cta mt-10 md:mt-12 flex flex-col items-center justify-center text-champagne-500">
+      <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
+      <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
+    </div>
   </div>
 
-  <div id="scroll-hint" class="scroll-hint fixed bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center z-30 text-champagne-500 pointer-events-none">
-    <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
-    <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
-  </div>
+
 </section>
 
     <!-- ============================================================
