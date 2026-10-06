@@ -381,19 +381,17 @@
     </div>
 
     <!-- Dica "Saiba mais": logo abaixo do botão, só na abertura -->
-    <div id="scroll-hint" class="scroll-hint hero-cta mt-10 md:mt-12 flex items-center justify-center gap-4 text-champagne-500">
-      <!-- Mão deslizando o dedo para cima (gesto de rolagem no celular) -->
-      <span class="swipe-hand relative flex items-end justify-center w-8 h-10" aria-hidden="true">
+    <div id="scroll-hint" class="scroll-hint hero-cta mt-10 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500">
+      <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
+      <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
+      <!-- Mão deslizando o dedo para cima, à direita do texto (texto continua centralizado) -->
+      <span class="swipe-hand absolute left-full ml-5 top-1/2 -translate-y-1/2 flex items-end justify-center w-8 h-10" aria-hidden="true">
         <span class="swipe-trail absolute left-1/2 -translate-x-1/2 bottom-2 w-[1px] h-6 bg-current opacity-40"></span>
         <span class="swipe-finger relative block">
           <span class="swipe-touch" aria-hidden="true"></span>
           <iconify-icon icon="ph:hand-pointing-light" class="text-[26px] block"></iconify-icon>
         </span>
       </span>
-      <div class="flex flex-col items-center">
-        <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
-        <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
-      </div>
     </div>
   </div>
 
