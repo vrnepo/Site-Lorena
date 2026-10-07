@@ -647,17 +647,29 @@
     function go(toDock) {
       if (toDock === docked) return;
       docked = toDock;
+      const interrupted = tween && tween.isActive();
       if (tween) tween.kill();
-      const from = metrics(toDock ? heroName : navName);
-      const to   = metrics(toDock ? navName  : heroName);
-      // Esconde as duas cópias "reais" e anima o clone entre elas
+      // Ponto de partida: onde o nome está agora (ou onde o clone estava, se o
+      // voo anterior foi interrompido no meio). O destino na barra é fixo; o
+      // destino no hero é remedido a cada quadro, porque a página continua
+      // rolando sob o dedo durante o voo.
+      const from = interrupted ? metrics(fly) : metrics(toDock ? heroName : navName);
+      const navM = metrics(navName);
       gsap.set(heroName, { autoAlpha: 0 });
       navName.style.visibility = 'hidden';
       nav.classList.toggle('nav-docked', toDock);
       if (toDock) nav.removeAttribute('aria-hidden'); else nav.setAttribute('aria-hidden', 'true');
-      gsap.set(fly, { autoAlpha: 1, x: from.x, y: from.y, fontSize: from.fontSize, lineHeight: from.lineHeight, color: from.color });
-      tween = gsap.to(fly, { x: to.x, y: to.y, fontSize: to.fontSize, lineHeight: to.lineHeight, color: to.color,
-        duration: 0.75, ease: 'power3.inOut',
+
+      const lerp = gsap.utils.interpolate, state = { p: 0 };
+      const render = () => {
+        const to = toDock ? navM : metrics(heroName), p = state.p;
+        gsap.set(fly, { autoAlpha: 1,
+          x: lerp(from.x, to.x, p), y: lerp(from.y, to.y, p),
+          fontSize: lerp(from.fontSize, to.fontSize, p), lineHeight: lerp(from.lineHeight, to.lineHeight, p),
+          color: lerp(from.color, to.color, p) });
+      };
+      render();
+      tween = gsap.to(state, { p: 1, duration: 0.75, ease: 'power3.inOut', onUpdate: render,
         onComplete: () => {
           gsap.set(fly, { autoAlpha: 0 });
           if (docked) navName.style.visibility = ''; else gsap.set(heroName, { autoAlpha: 1 });
