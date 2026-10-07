@@ -251,33 +251,14 @@
   .rose-table .sub { background: #F6E6E7; color: var(--copper); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
   /* ---------- Gesto de deslizar para cima (dica "Saiba mais") ---------- */
-  @keyframes swipe-up {
-    0%   { transform: translateY(8px) rotate(-8deg); opacity: 0; }
     20%  { opacity: 1; }
     70%  { transform: translateY(-10px) rotate(-8deg); opacity: 1; }
     100% { transform: translateY(-14px) rotate(-8deg); opacity: 0; }
   }
-  @keyframes swipe-trail {
-    0%, 25% { transform: translateX(-50%) scaleY(0); opacity: 0; }
     70%     { transform: translateX(-50%) scaleY(1); opacity: 0.4; }
     100%    { transform: translateX(-50%) scaleY(1); opacity: 0; }
   }
-  .swipe-finger { animation: swipe-up 1.4s ease-in-out infinite; }
   /* bolinha na ponta do dedo: "toque" na tela e arrasto junto com a mão */
-  .swipe-touch {
-    position: absolute; left: calc(50% - 2px); top: -3px; width: 8px; height: 8px; border-radius: 9999px;
-    background: var(--copper); transform: translateX(-50%) scale(0.4); opacity: 0;
-    box-shadow: 0 0 0 3px rgba(201, 83, 95, 0.18);
-    animation: swipe-touch 1.4s ease-in-out infinite;
-  }
-  @keyframes swipe-touch {
-    0%   { transform: translateX(-50%) scale(0.4); opacity: 0; }
-    12%  { transform: translateX(-50%) scale(1.35); opacity: 0.95; box-shadow: 0 0 0 6px rgba(201, 83, 95, 0.12); }
-    22%  { transform: translateX(-50%) scale(1); opacity: 0.9; box-shadow: 0 0 0 3px rgba(201, 83, 95, 0.18); }
-    70%  { opacity: 0.9; }
-    100% { transform: translateX(-50%) scale(0.8); opacity: 0; }
-  }
-  .swipe-trail  { transform-origin: bottom; animation: swipe-trail 1.4s ease-in-out infinite; }
 
   /* ---------- Lightbox: foto ampliada com fade ---------- */
   .lightbox-img { cursor: zoom-in; }
@@ -437,14 +418,6 @@
             class="scroll-hint hero-cta mt-6 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500 hover:text-copper transition-colors duration-500 cursor-pointer bg-transparent border-0 p-2 appearance-none">
       <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
       <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
-      <!-- Mão deslizando o dedo para cima, à direita do texto (texto continua centralizado) -->
-      <span class="swipe-hand absolute left-full ml-5 top-1/2 -translate-y-1/2 flex items-end justify-center w-8 h-10" aria-hidden="true">
-        <span class="swipe-trail absolute left-1/2 -translate-x-1/2 bottom-2 w-[1px] h-6 bg-current opacity-40"></span>
-        <span class="swipe-finger relative block">
-          <span class="swipe-touch" aria-hidden="true"></span>
-          <iconify-icon icon="ph:hand-pointing-light" class="text-[26px] block"></iconify-icon>
-        </span>
-      </span>
     </button>
   </div>
 
