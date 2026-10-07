@@ -124,11 +124,23 @@
     opacity: 1; visibility: visible; pointer-events: auto; transform: none;
     transition: opacity .5s ease, transform .5s ease, visibility 0s;
   }
-  /* Nome em voo entre o centro do hero e o canto da barra */
-  #name-fly {
+  /* Clones em voo entre o hero e a barra (nome → esquerda, botão → direita) */
+  #name-fly, #cta-fly {
     position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none;
     white-space: nowrap; will-change: transform, font-size;
   }
+  #cta-fly {
+    display: inline-flex; align-items: center; justify-content: center;
+    box-sizing: border-box; border-radius: 9999px; overflow: hidden;
+    background: var(--copper); color: #fff;
+    font-family: Poppins, sans-serif; font-weight: 500; letter-spacing: .15em; text-transform: uppercase;
+    box-shadow: 0 6px 18px rgba(201, 83, 95, 0.25);
+  }
+  #cta-fly iconify-icon { display: inline-block; flex: none; }
+  #cta-fly .cta-prefix { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; }
+  /* Os botões reais somem/aparecem na hora da troca pelo clone: sem transição
+     de opacidade/visibilidade (o transition-all do Tailwind atrasaria 0,5 s). */
+  #hero-cta, #nav-cta { transition-property: background-color, box-shadow, color; }
   .nav-link { position: relative; }
   .nav-link::after {
     content: ''; position: absolute; top: 50%; left: 0; width: 0%; height: 140%;
@@ -281,11 +293,11 @@
 <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-3 px-5 md:px-12" aria-hidden="true">
   <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
     <a id="nav-name" href="#inicio" class="font-script text-3xl sm:text-4xl md:text-5xl leading-none text-copper whitespace-nowrap">Lorena Siqueira</a>
-    <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."
+    <a id="nav-cta" href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."
        target="_blank" rel="noopener"
-       class="inline-flex items-center gap-2 text-[11px] md:text-xs tracking-[0.15em] uppercase text-white bg-copper px-4 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-copper-light transition-all duration-500 font-ui font-medium shadow-[0_6px_18px_rgba(201,83,95,0.25)] whitespace-nowrap">
+       class="inline-flex items-center justify-center gap-2 text-[11px] md:text-xs tracking-[0.15em] uppercase text-white bg-copper px-4 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-copper-light transition-all duration-500 font-ui font-medium shadow-[0_6px_18px_rgba(201,83,95,0.25)] whitespace-nowrap">
       <iconify-icon icon="ic:baseline-whatsapp" class="text-base"></iconify-icon>
-      <span><span class="hidden sm:inline">Falar no </span>WhatsApp</span>
+      <span class="whitespace-nowrap"><span class="cta-prefix hidden sm:inline">Falar no </span>WhatsApp</span>
     </a>
   </div>
 </nav>
@@ -386,10 +398,10 @@
 
     <!-- Chamada única -->
     <div class="hero-cta">
-      <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
-         class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-8 py-3.5 md:px-9 md:py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
+      <a id="hero-cta" href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
+         class="inline-flex items-center justify-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-8 py-3.5 md:px-9 md:py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
         <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
-        <span>Falar no WhatsApp</span>
+        <span class="whitespace-nowrap"><span class="cta-prefix">Falar no </span>WhatsApp</span>
       </a>
     </div>
 
@@ -597,7 +609,7 @@
      2. NAVEGAÇÃO (blur ao rolar, menu mobile, link ativo)
      ============================================================ */
   function navigation() {
-    dockName();
+    dock();
 
     // Rolagem suave para âncoras (sem plugin extra)
     document.addEventListener('click', e => {
@@ -611,69 +623,101 @@
   }
 
   /* ============================================================
-     2b. NOME QUE VOA PARA O CANTO
+     2b. NOME E BOTÃO QUE VOAM PARA OS CANTOS
      A barra fica oculta sobre o hero. Quando o nome central começa a
-     sair pelo topo, um clone fixo (#name-fly) parte da posição do nome
-     no hero e pousa sobre o nome da barra; a barra surge junto. Ao
-     rolar de volta, faz o caminho inverso.
+     sair pelo topo, clones fixos partem da posição dos elementos no
+     hero e pousam sobre os da barra: o nome no canto esquerdo
+     (#name-fly) e o botão do WhatsApp no direito (#cta-fly, a pílula
+     encolhe e perde o "Falar no" quando a barra o esconde). A barra
+     surge junto. Ao rolar de volta, o caminho inverso. O destino no
+     hero é remedido a cada quadro, porque a página continua rolando
+     durante o voo.
      ============================================================ */
-  function dockName() {
-    const nav = $('#navbar'), navName = $('#nav-name'), heroName = $('.hero-title-line');
-    if (!nav || !navName || !heroName) return;
+  function dock() {
+    const nav = $('#navbar'), heroName = $('.hero-title-line'), navName = $('#nav-name');
+    const heroCta = $('#hero-cta'), navCta = $('#nav-cta');
+    if (!nav || !heroName || !navName) return;
     const h1 = heroName.closest('h1') || heroName;
+    const setNav = on => { nav.classList.toggle('nav-docked', on); if (on) nav.removeAttribute('aria-hidden'); else nav.setAttribute('aria-hidden', 'true'); };
 
     if (reduceMotion) {
-      ScrollTrigger.create({ trigger: h1, start: 'top 20px',
-        onEnter: () => { nav.classList.add('nav-docked'); nav.removeAttribute('aria-hidden'); },
-        onLeaveBack: () => { nav.classList.remove('nav-docked'); nav.setAttribute('aria-hidden', 'true'); } });
+      ScrollTrigger.create({ trigger: h1, start: 'top 20px', onEnter: () => setNav(true), onLeaveBack: () => setNav(false) });
       return;
     }
 
-    const fly = document.createElement('div');
-    fly.id = 'name-fly';
-    fly.className = 'font-script';
-    fly.textContent = navName.textContent.trim();
-    fly.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(fly);
-    gsap.set(fly, { autoAlpha: 0 });
+    const lerp = gsap.utils.interpolate;
+    const rect = el => el.getBoundingClientRect();
+    const flights = [];
+
+    // --- voo 1: nome (texto em caligrafia) ---
+    {
+      const fly = document.createElement('div');
+      fly.id = 'name-fly'; fly.className = 'font-script'; fly.setAttribute('aria-hidden', 'true');
+      fly.textContent = navName.textContent.trim();
+      document.body.appendChild(fly);
+      const measure = el => { const r = rect(el), cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+        return { x: r.left, y: r.top, fontSize: fs, lineHeight: r.height / fs, color: cs.color }; };
+      const apply = (a, b, p) => gsap.set(fly, { autoAlpha: 1,
+        x: lerp(a.x, b.x, p), y: lerp(a.y, b.y, p), fontSize: lerp(a.fontSize, b.fontSize, p),
+        lineHeight: lerp(a.lineHeight, b.lineHeight, p), color: lerp(a.color, b.color, p) });
+      flights.push({ fly, hero: heroName, bar: navName, measure, apply });
+    }
+
+    // --- voo 2: botão do WhatsApp (pílula) ---
+    if (heroCta && navCta) {
+      const fly = document.createElement('div');
+      fly.id = 'cta-fly'; fly.setAttribute('aria-hidden', 'true');
+      fly.innerHTML = '<iconify-icon icon="ic:baseline-whatsapp"></iconify-icon><span class="whitespace-nowrap"><span class="cta-prefix">Falar no&nbsp;</span>WhatsApp</span>';
+      document.body.appendChild(fly);
+      const icon = fly.querySelector('iconify-icon'), prefix = fly.querySelector('.cta-prefix');
+      let prefixFrac = 1; // fração visível do "Falar no" no clone (1 = inteiro, 0 = oculto)
+      const measure = el => {
+        const r = rect(el), cs = getComputedStyle(el);
+        const ic = el.querySelector('iconify-icon'), pf = el.querySelector('.cta-prefix');
+        const prefix01 = el === fly ? prefixFrac : (pf && getComputedStyle(pf).display !== 'none' ? 1 : 0);
+        return { x: r.left, y: r.top, w: r.width, h: r.height, fontSize: parseFloat(cs.fontSize),
+          gap: parseFloat(cs.columnGap) || 0, icon: ic ? parseFloat(getComputedStyle(ic).fontSize) : 16, prefix: prefix01 };
+      };
+      const apply = (a, b, p) => {
+        gsap.set(fly, { autoAlpha: 1, x: lerp(a.x, b.x, p), y: lerp(a.y, b.y, p), width: lerp(a.w, b.w, p), height: lerp(a.h, b.h, p),
+          fontSize: lerp(a.fontSize, b.fontSize, p) });
+        fly.style.columnGap = lerp(a.gap, b.gap, p) + 'px';
+        gsap.set(icon, { fontSize: lerp(a.icon, b.icon, p) });
+        // "Falar no" encolhe e some depressa (antes de ser cortado) quando a barra o esconde.
+        // Largura natural medida a cada quadro, porque depende do tamanho da fonte atual.
+        prefixFrac = lerp(a.prefix, b.prefix, p);
+        prefix.style.width = 'auto';
+        const natural = prefix.getBoundingClientRect().width;
+        gsap.set(prefix, { width: natural * prefixFrac, opacity: gsap.utils.clamp(0, 1, (prefixFrac - 0.45) * 2.2) });
+      };
+      flights.push({ fly, hero: heroCta, bar: navCta, measure, apply });
+    }
+    flights.forEach(f => gsap.set(f.fly, { autoAlpha: 0 }));
 
     let docked = false, tween = null;
-    const metrics = el => {
-      const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
-      const fs = parseFloat(cs.fontSize);
-      return { x: r.left, y: r.top, fontSize: fs, lineHeight: r.height / fs, color: cs.color };
-    };
-
     function go(toDock) {
       if (toDock === docked) return;
       docked = toDock;
       const interrupted = tween && tween.isActive();
       if (tween) tween.kill();
-      // Ponto de partida: onde o nome está agora (ou onde o clone estava, se o
-      // voo anterior foi interrompido no meio). O destino na barra é fixo; o
-      // destino no hero é remedido a cada quadro, porque a página continua
-      // rolando sob o dedo durante o voo.
-      const from = interrupted ? metrics(fly) : metrics(toDock ? heroName : navName);
-      const navM = metrics(navName);
-      gsap.set(heroName, { autoAlpha: 0 });
-      navName.style.visibility = 'hidden';
-      nav.classList.toggle('nav-docked', toDock);
-      if (toDock) nav.removeAttribute('aria-hidden'); else nav.setAttribute('aria-hidden', 'true');
-
-      const lerp = gsap.utils.interpolate, state = { p: 0 };
-      const render = () => {
-        const to = toDock ? navM : metrics(heroName), p = state.p;
-        gsap.set(fly, { autoAlpha: 1,
-          x: lerp(from.x, to.x, p), y: lerp(from.y, to.y, p),
-          fontSize: lerp(from.fontSize, to.fontSize, p), lineHeight: lerp(from.lineHeight, to.lineHeight, p),
-          color: lerp(from.color, to.color, p) });
-      };
+      // Partida: onde o elemento está agora (ou onde o clone estava, se o voo
+      // anterior foi interrompido). Destino na barra é fixo; no hero é remedido
+      // a cada quadro.
+      flights.forEach(f => {
+        f.from = interrupted ? f.measure(f.fly) : f.measure(toDock ? f.hero : f.bar);
+        f.barM = f.measure(f.bar);
+        gsap.set(f.hero, { autoAlpha: 0 });
+        f.bar.style.visibility = 'hidden';
+      });
+      setNav(toDock);
+      const state = { p: 0 };
+      const render = () => flights.forEach(f => f.apply(f.from, toDock ? f.barM : f.measure(f.hero), state.p));
       render();
       tween = gsap.to(state, { p: 1, duration: 0.75, ease: 'power3.inOut', onUpdate: render,
-        onComplete: () => {
-          gsap.set(fly, { autoAlpha: 0 });
-          if (docked) navName.style.visibility = ''; else gsap.set(heroName, { autoAlpha: 1 });
-        } });
+        onComplete: () => flights.forEach(f => {
+          gsap.set(f.fly, { autoAlpha: 0 });
+          if (docked) f.bar.style.visibility = ''; else gsap.set(f.hero, { autoAlpha: 1 });
+        }) });
     }
 
     ScrollTrigger.create({ trigger: h1, start: 'top 20px', onEnter: () => go(true), onLeaveBack: () => go(false) });
