@@ -109,12 +109,25 @@
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
   }
 
-  /* ---------- Navegação ---------- */
-  .navbar-scrolled {
-    background-color: rgba(255, 255, 255, 0.9) !important;
+  /* ---------- Navegação ----------
+     Oculta sobre o hero; .nav-docked (adicionada por scripts.html quando o
+     nome central chega ao canto) mostra a barra branca com blur. */
+  #navbar {
+    opacity: 0; visibility: hidden; pointer-events: none;
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(201, 83, 95, 0.18);
-    padding-top: 0.75rem !important; padding-bottom: 0.75rem !important;
+    transition: opacity .5s ease, transform .5s ease, visibility 0s linear .5s;
+  }
+  #navbar.nav-docked {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: none;
+    transition: opacity .5s ease, transform .5s ease, visibility 0s;
+  }
+  /* Nome em voo entre o centro do hero e o canto da barra */
+  #name-fly {
+    position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none;
+    white-space: nowrap; will-change: transform, font-size;
   }
   .nav-link { position: relative; }
   .nav-link::after {
@@ -261,13 +274,13 @@
   <div class="noise-overlay" aria-hidden="true"></div>
 
   <!-- ============================================================
-     NAVEGAÇÃO: logomarca em caligrafia + único botão (WhatsApp)
+     NAVEGAÇÃO: fica oculta sobre o hero. Ao rolar, o nome central
+     "voa" para cá (scripts.html → dockName) e a barra aparece com
+     o botão do WhatsApp. Estilos em styles.html (#navbar, .nav-docked).
      ============================================================ -->
-<nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-700 py-4 md:py-5 px-5 md:px-12">
+<nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-3 px-5 md:px-12" aria-hidden="true">
   <div class="max-w-7xl mx-auto flex justify-between items-center gap-4">
-    <a href="#inicio" class="font-script text-3xl sm:text-4xl md:text-5xl leading-none text-copper whitespace-nowrap">
-      Lorena Siqueira
-    </a>
+    <a id="nav-name" href="#inicio" class="font-script text-3xl sm:text-4xl md:text-5xl leading-none text-copper whitespace-nowrap">Lorena Siqueira</a>
     <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena%21%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."
        target="_blank" rel="noopener"
        class="inline-flex items-center gap-2 text-[11px] md:text-xs tracking-[0.15em] uppercase text-white bg-copper px-4 md:px-6 py-2.5 md:py-3 rounded-full hover:bg-copper-light transition-all duration-500 font-ui font-medium shadow-[0_6px_18px_rgba(201,83,95,0.25)] whitespace-nowrap">
@@ -284,18 +297,18 @@
      A logo é desenhada em traço na abertura; depois surgem nome,
      credencial e frase. Cores em tailwind.config → champagne.
      ============================================================ -->
-<section id="inicio" class="hero-light relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-elevated text-champagne-800">
+<section id="inicio" class="hero-light relative min-h-[100svh] w-full flex items-center justify-center overflow-hidden bg-elevated text-champagne-800">
   <!-- Brilho suave atrás da logo -->
   <div class="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
     <div class="absolute left-1/2 top-[38%] -translate-x-1/2 -translate-y-1/2 w-[70vw] h-[70vw] max-w-[min(760px,100vw)] max-h-[760px] rounded-full blur-3xl opacity-70"
          style="background: radial-gradient(circle, rgba(240,211,213,0.7) 0%, rgba(251,241,242,0) 70%);"></div>
   </div>
 
-  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-28 pb-24 md:pt-32">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center text-center pt-8 pb-8 md:pt-16 md:pb-16">
     <!-- Logomarca (cachorro, gato, arco, estetoscópio e ramo) desenhada em traço.
          Fonte: 01 - Logomarca/logomarca.html. Cada .logo-stroke é animado por
          stroke-dashoffset; os .logo-fill surgem por opacidade no fim. -->
-    <div id="mark-container" class="relative w-60 md:w-72 mb-6 md:mb-8 mx-auto">
+    <div id="mark-container" class="relative w-40 sm:w-56 md:w-72 mb-3 md:mb-8 mx-auto">
       <svg viewBox="150 135 415 335" class="w-full h-auto overflow-visible" role="img" aria-label="Logomarca Lorena Siqueira">
         <defs>
           <linearGradient id="logo-ink" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b38b83"/><stop offset="1" stop-color="#86655d"/></linearGradient>
@@ -347,7 +360,7 @@
     </h1>
 
     <!-- Divisor com coração (identidade dos receituários) -->
-    <div class="hero-cred-line flex items-center gap-4 md:gap-6 mb-4 text-champagne-300" aria-hidden="true">
+    <div class="hero-cred-line flex items-center gap-4 md:gap-6 mb-3 md:mb-4 text-champagne-300" aria-hidden="true">
       <span class="h-[1px] w-16 md:w-28 bg-current"></span>
       <iconify-icon icon="solar:heart-bold" class="text-copper text-base"></iconify-icon>
       <span class="h-[1px] w-16 md:w-28 bg-current"></span>
@@ -362,26 +375,26 @@
       <iconify-icon icon="solar:heart-linear" class="text-copper-light text-xs"></iconify-icon>
       <span class="h-[1px] w-8 bg-current"></span>
     </div>
-    <p class="overflow-hidden mb-8 md:mb-10">
-      <span class="block hero-cred-line font-display uppercase tracking-[0.35em] text-sm md:text-base text-champagne-700">CRMV-RJ 18798</span>
+    <p class="overflow-hidden mb-4 md:mb-10">
+      <span class="block hero-cred-line font-display uppercase tracking-[0.35em] text-xs md:text-base text-champagne-700">CRMV-RJ 18798</span>
     </p>
 
     <!-- Frase de destaque -->
-    <p class="text-xl md:text-3xl lg:text-4xl font-display italic leading-snug text-champagne-800 max-w-3xl mx-auto mb-10 overflow-hidden">
+    <p class="text-lg md:text-3xl lg:text-4xl font-display italic leading-snug text-champagne-800 max-w-3xl mx-auto mb-5 md:mb-10 overflow-hidden">
       <span class="block hero-desc-line">Cada paciente é único e merece o melhor cuidado.</span>
     </p>
 
     <!-- Chamada única -->
     <div class="hero-cta">
       <a href="https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular." target="_blank" rel="noopener"
-         class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-9 py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
+         class="inline-flex items-center gap-3 text-xs md:text-sm tracking-[0.15em] uppercase text-white bg-copper hover:bg-copper-light px-8 py-3.5 md:px-9 md:py-4 rounded-full font-ui font-medium transition-all duration-500 shadow-[0_8px_24px_rgba(201,83,95,0.28)] btn-breathing">
         <iconify-icon icon="ic:baseline-whatsapp" class="text-lg"></iconify-icon>
         <span>Falar no WhatsApp</span>
       </a>
     </div>
 
     <!-- Dica "Saiba mais": logo abaixo do botão, só na abertura -->
-    <div id="scroll-hint" class="scroll-hint hero-cta mt-10 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500">
+    <div id="scroll-hint" class="scroll-hint hero-cta mt-6 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500">
       <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
       <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
       <!-- Mão deslizando o dedo para cima, à direita do texto (texto continua centralizado) -->
@@ -551,7 +564,7 @@
   function heroIntro() {
     const paths = $$('.logo-stroke');
     const fills = $$('.logo-fill');
-    const targets = ['.hero-title-line', '.hero-cred-line', '.hero-desc-line', '.hero-cta', '#navbar'];
+    const targets = ['.hero-title-line', '.hero-cred-line', '.hero-desc-line', '.hero-cta'];
 
     if (reduceMotion) {
       gsap.set(targets, { autoAlpha: 1 });
@@ -577,20 +590,14 @@
       .fromTo('.hero-title-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 1, stagger: 0.15 }, reveal + 0.25)  // nome
       .fromTo('.hero-cred-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 0.8, stagger: 0.1 }, reveal + 0.45) // credencial
       .fromTo('.hero-desc-line', { yPercent: 100 }, { yPercent: 0, autoAlpha: 1, duration: 0.8 }, reveal + 0.6)                // frase
-      .fromTo('.hero-cta', { y: 20 }, { y: 0, autoAlpha: 1, duration: 0.8 }, reveal + 0.75)                                      // botão
-      .to('#navbar', { autoAlpha: 1, duration: 0.8 }, reveal + 0.5);
+      .fromTo('.hero-cta', { y: 20 }, { y: 0, autoAlpha: 1, duration: 0.8 }, reveal + 0.75);                                     // botão
   }
 
   /* ============================================================
      2. NAVEGAÇÃO (blur ao rolar, menu mobile, link ativo)
      ============================================================ */
   function navigation() {
-    ScrollTrigger.create({ start: 50, end: 'max', toggleClass: { className: 'navbar-scrolled', targets: '#navbar' } });
-    // Enquanto a navegação estiver sobre o hero claro, usa texto escuro
-    if ($('.hero-light')) ScrollTrigger.create({ trigger: '.hero-light', start: 'top top', end: 'bottom 80px', toggleClass: { className: 'nav-on-light', targets: '#navbar' } });
-    if ($('#navbar') && window.scrollY < 10 && $('.hero-light')) $('#navbar').classList.add('nav-on-light');
-
-    // A dica "Saiba mais" é fixa e permanece visível durante toda a rolagem.
+    dockName();
 
     // Rolagem suave para âncoras (sem plugin extra)
     document.addEventListener('click', e => {
@@ -601,6 +608,63 @@
       e.preventDefault();
       target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     });
+  }
+
+  /* ============================================================
+     2b. NOME QUE VOA PARA O CANTO
+     A barra fica oculta sobre o hero. Quando o nome central começa a
+     sair pelo topo, um clone fixo (#name-fly) parte da posição do nome
+     no hero e pousa sobre o nome da barra; a barra surge junto. Ao
+     rolar de volta, faz o caminho inverso.
+     ============================================================ */
+  function dockName() {
+    const nav = $('#navbar'), navName = $('#nav-name'), heroName = $('.hero-title-line');
+    if (!nav || !navName || !heroName) return;
+    const h1 = heroName.closest('h1') || heroName;
+
+    if (reduceMotion) {
+      ScrollTrigger.create({ trigger: h1, start: 'top 20px',
+        onEnter: () => { nav.classList.add('nav-docked'); nav.removeAttribute('aria-hidden'); },
+        onLeaveBack: () => { nav.classList.remove('nav-docked'); nav.setAttribute('aria-hidden', 'true'); } });
+      return;
+    }
+
+    const fly = document.createElement('div');
+    fly.id = 'name-fly';
+    fly.className = 'font-script';
+    fly.textContent = navName.textContent.trim();
+    fly.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(fly);
+    gsap.set(fly, { autoAlpha: 0 });
+
+    let docked = false, tween = null;
+    const metrics = el => {
+      const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
+      const fs = parseFloat(cs.fontSize);
+      return { x: r.left, y: r.top, fontSize: fs, lineHeight: r.height / fs, color: cs.color };
+    };
+
+    function go(toDock) {
+      if (toDock === docked) return;
+      docked = toDock;
+      if (tween) tween.kill();
+      const from = metrics(toDock ? heroName : navName);
+      const to   = metrics(toDock ? navName  : heroName);
+      // Esconde as duas cópias "reais" e anima o clone entre elas
+      gsap.set(heroName, { autoAlpha: 0 });
+      navName.style.visibility = 'hidden';
+      nav.classList.toggle('nav-docked', toDock);
+      if (toDock) nav.removeAttribute('aria-hidden'); else nav.setAttribute('aria-hidden', 'true');
+      gsap.set(fly, { autoAlpha: 1, x: from.x, y: from.y, fontSize: from.fontSize, lineHeight: from.lineHeight, color: from.color });
+      tween = gsap.to(fly, { x: to.x, y: to.y, fontSize: to.fontSize, lineHeight: to.lineHeight, color: to.color,
+        duration: 0.75, ease: 'power3.inOut',
+        onComplete: () => {
+          gsap.set(fly, { autoAlpha: 0 });
+          if (docked) navName.style.visibility = ''; else gsap.set(heroName, { autoAlpha: 1 });
+        } });
+    }
+
+    ScrollTrigger.create({ trigger: h1, start: 'top 20px', onEnter: () => go(true), onLeaveBack: () => go(false) });
   }
 
   /* ============================================================
