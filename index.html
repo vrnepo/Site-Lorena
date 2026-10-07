@@ -754,17 +754,13 @@
 
   /* ============================================================
      2c. BOTÃO "SAIBA MAIS"
-     Rola suavemente até #sobre. Na primeira vez da visita (sessionStorage)
-     mostra, em sincronia com a rolagem, uma mão arrastando o dedo para
-     cima: é assim que se revela o conteúdo abaixo no celular.
+     Rola suavemente até #sobre e mostra, a cada clique e em sincronia com
+     a rolagem, uma mão arrastando o dedo para cima: é assim que se revela
+     o conteúdo abaixo no celular.
      ============================================================ */
   function scrollHint() {
     const btn = $('#scroll-hint'), target = $('#sobre');
     if (!btn || !target) return;
-    const KEY = 'ls-swipe-demo';
-    const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
-    const mark = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} };
-
     function buildDemo() {
       const demo = document.createElement('div');
       demo.className = 'swipe-demo'; demo.setAttribute('aria-hidden', 'true');
@@ -783,8 +779,8 @@
       const pos = { y: window.scrollY };
       gsap.to(pos, { y: top, duration: DUR, ease: 'power2.inOut', onUpdate: () => window.scrollTo({ top: pos.y, behavior: 'instant' }) });
 
-      if (seen()) return;
-      mark();
+      // Remove uma demonstração ainda em curso (clique repetido) antes de começar outra
+      $$('.swipe-demo').forEach(el => { gsap.killTweensOf(el); el.remove(); });
       const d = buildDemo();
       const finger = $('.swipe-demo__finger', d), trail = $('.swipe-demo__trail', d), touch = $('.swipe-demo__touch', d);
       const RISE = 150; // quanto o dedo sobe (px)
