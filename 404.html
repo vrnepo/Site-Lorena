@@ -138,6 +138,32 @@
   }
   #cta-fly iconify-icon { display: inline-block; flex: none; }
   #cta-fly .cta-prefix { display: inline-block; overflow: hidden; white-space: nowrap; vertical-align: bottom; }
+  /* ---------- Demonstração do gesto (uma vez por visita, ao clicar em "Saiba mais") ----------
+     Mão grande no centro da tela arrastando o dedo para cima enquanto a página
+     rola para baixo. Montada em scripts.html → scrollHint(). */
+  .swipe-demo {
+    position: fixed; inset: 0; z-index: 70; pointer-events: none;
+    display: flex; align-items: center; justify-content: center; opacity: 0;
+  }
+  .swipe-demo__stage {
+    position: relative; width: 220px; height: 300px;
+    background: radial-gradient(circle at 50% 55%, rgba(251, 241, 242, 0.92) 0%, rgba(251, 241, 242, 0) 62%);
+  }
+  .swipe-demo__trail {
+    position: absolute; left: 50%; bottom: 104px; width: 3px; height: 0;
+    transform: translateX(-50%); border-radius: 3px; opacity: 0.55;
+    background: linear-gradient(to top, var(--copper), rgba(201, 83, 95, 0));
+  }
+  .swipe-demo__finger {
+    position: absolute; left: 50%; bottom: 20px; /* centralizado via xPercent no GSAP */
+    color: var(--copper); font-size: 84px; line-height: 1; filter: drop-shadow(0 6px 14px rgba(201, 83, 95, 0.25));
+  }
+  .swipe-demo__finger iconify-icon { display: block; }
+  .swipe-demo__touch {
+    position: absolute; left: calc(50% - 3px); top: 2px; width: 14px; height: 14px; border-radius: 9999px;
+    background: var(--copper); box-shadow: 0 0 0 10px rgba(201, 83, 95, 0.18); transform-origin: center;
+  }
+
   /* Os botões reais somem/aparecem na hora da troca pelo clone: sem transição
      de opacidade/visibilidade (o transition-all do Tailwind atrasaria 0,5 s). */
   #hero-cta, #nav-cta { transition-property: background-color, box-shadow, color; }
@@ -405,8 +431,10 @@
       </a>
     </div>
 
-    <!-- Dica "Saiba mais": logo abaixo do botão, só na abertura -->
-    <div id="scroll-hint" class="scroll-hint hero-cta mt-6 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500">
+    <!-- Botão "Saiba mais": rola até a seção Sobre e, na primeira vez da visita,
+         mostra a demonstração do gesto de deslizar (scripts.html → scrollHint) -->
+    <button type="button" id="scroll-hint" aria-label="Saiba mais: rolar para o conteúdo"
+            class="scroll-hint hero-cta mt-6 md:mt-12 relative inline-flex flex-col items-center justify-center text-champagne-500 hover:text-copper transition-colors duration-500 cursor-pointer bg-transparent border-0 p-2 appearance-none">
       <span class="text-[11px] tracking-[0.25em] uppercase mb-2 font-ui">Saiba mais</span>
       <iconify-icon icon="solar:arrow-down-linear" class="text-2xl animate-bounce"></iconify-icon>
       <!-- Mão deslizando o dedo para cima, à direita do texto (texto continua centralizado) -->
@@ -417,7 +445,7 @@
           <iconify-icon icon="ph:hand-pointing-light" class="text-[26px] block"></iconify-icon>
         </span>
       </span>
-    </div>
+    </button>
   </div>
 
 
@@ -610,6 +638,7 @@
      ============================================================ */
   function navigation() {
     dock();
+    scrollHint();
 
     // Rolagem suave para âncoras (sem plugin extra)
     document.addEventListener('click', e => {
@@ -721,6 +750,53 @@
     }
 
     ScrollTrigger.create({ trigger: h1, start: 'top 20px', onEnter: () => go(true), onLeaveBack: () => go(false) });
+  }
+
+  /* ============================================================
+     2c. BOTÃO "SAIBA MAIS"
+     Rola suavemente até #sobre. Na primeira vez da visita (sessionStorage)
+     mostra, em sincronia com a rolagem, uma mão arrastando o dedo para
+     cima: é assim que se revela o conteúdo abaixo no celular.
+     ============================================================ */
+  function scrollHint() {
+    const btn = $('#scroll-hint'), target = $('#sobre');
+    if (!btn || !target) return;
+    const KEY = 'ls-swipe-demo';
+    const seen = () => { try { return sessionStorage.getItem(KEY) === '1'; } catch (e) { return false; } };
+    const mark = () => { try { sessionStorage.setItem(KEY, '1'); } catch (e) {} };
+
+    function buildDemo() {
+      const demo = document.createElement('div');
+      demo.className = 'swipe-demo'; demo.setAttribute('aria-hidden', 'true');
+      demo.innerHTML = '<div class="swipe-demo__stage"><span class="swipe-demo__trail"></span>' +
+        '<span class="swipe-demo__finger"><span class="swipe-demo__touch"></span><iconify-icon icon="ph:hand-pointing-light"></iconify-icon></span></div>';
+      document.body.appendChild(demo);
+      return demo;
+    }
+
+    btn.addEventListener('click', () => {
+      const top = target.getBoundingClientRect().top + window.scrollY;
+      if (reduceMotion) { window.scrollTo({ top, behavior: 'auto' }); return; }
+
+      const DUR = 1.4;
+      // Rolagem controlada (behavior:'instant' evita o smooth do CSS brigar com o tween)
+      const pos = { y: window.scrollY };
+      gsap.to(pos, { y: top, duration: DUR, ease: 'power2.inOut', onUpdate: () => window.scrollTo({ top: pos.y, behavior: 'instant' }) });
+
+      if (seen()) return;
+      mark();
+      const d = buildDemo();
+      const finger = $('.swipe-demo__finger', d), trail = $('.swipe-demo__trail', d), touch = $('.swipe-demo__touch', d);
+      const RISE = 150; // quanto o dedo sobe (px)
+      gsap.set(finger, { xPercent: -50, y: 0 }); gsap.set(trail, { height: 0 }); gsap.set(touch, { scale: 0.4, opacity: 0 });
+      gsap.timeline({ defaults: { ease: 'power2.inOut' }, onComplete: () => d.remove() })
+        .to(d, { opacity: 1, duration: 0.3 }, 0)
+        .to(touch, { scale: 1, opacity: 1, duration: 0.25, ease: 'back.out(2)' }, 0.15)   // toque
+        .to(finger, { y: -RISE, duration: DUR * 0.6 }, 0.35)                               // arrasta para cima
+        .to(trail, { height: RISE, duration: DUR * 0.6 }, 0.35)                            // rastro
+        .to(touch, { opacity: 0, scale: 0.6, duration: 0.25 }, 0.35 + DUR * 0.6)           // solta
+        .to(d, { opacity: 0, duration: 0.35 }, 0.35 + DUR * 0.6 + 0.1);
+    });
   }
 
   /* ============================================================
