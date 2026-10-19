@@ -250,15 +250,38 @@
   .rose-table td:last-child { color: var(--copper); }
   .rose-table .sub { background: #F6E6E7; color: var(--copper); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
-  /* ---------- Gesto de deslizar para cima (dica "Saiba mais") ---------- */
-    20%  { opacity: 1; }
-    70%  { transform: translateY(-10px) rotate(-8deg); opacity: 1; }
-    100% { transform: translateY(-14px) rotate(-8deg); opacity: 0; }
+  /* ---------- Galeria deslizante (Sobre → Momentos) ----------
+     Faixa de largura "max-content" com os itens duplicados pelo JS; a
+     animação anda exatamente uma cópia (--gallery-half, em px, medida
+     pelo JS) e recomeça sem emenda. Cada item carrega a própria margem
+     à direita (em vez de gap) para a metade da faixa ser exata. */
+  .gallery {
+    --gallery-item: clamp(210px, 58vw, 300px);
+    --gallery-gap: 1.25rem;
+    position: relative; width: 100vw; margin-left: calc(50% - 50vw);
+    overflow: hidden; padding: 0.5rem 0 1.5rem;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
   }
-    70%     { transform: translateX(-50%) scaleY(1); opacity: 0.4; }
-    100%    { transform: translateX(-50%) scaleY(1); opacity: 0; }
+  .gallery-track {
+    display: flex; width: max-content;
+    animation: gallery-slide var(--gallery-duration, 100s) linear infinite;
+    will-change: transform;
   }
-  /* bolinha na ponta do dedo: "toque" na tela e arrasto junto com a mão */
+  .gallery:hover .gallery-track,
+  .gallery.paused .gallery-track,
+  body.lightbox-open .gallery-track { animation-play-state: paused; }
+  .gallery-item {
+    flex: 0 0 auto; width: var(--gallery-item); aspect-ratio: 4 / 5; margin: 0 var(--gallery-gap) 0 0;
+    border-radius: 16px; overflow: hidden; border: 1px solid #F0D3D5; background: #F6E6E7;
+    box-shadow: 0 12px 30px rgba(201, 83, 95, 0.10);
+  }
+  .gallery-item img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s var(--ease-out-expo); }
+  .gallery-item:hover img { transform: scale(1.05); }
+  @keyframes gallery-slide { from { transform: translateX(0); } to { transform: translateX(calc(-1 * var(--gallery-half, 50%))); } }
+  /* Sem animação (prefers-reduced-motion ou JS ausente): vira uma faixa rolável */
+  .gallery.static { overflow-x: auto; -webkit-mask-image: none; mask-image: none; scrollbar-width: thin; }
+  .gallery.static .gallery-track { animation: none; }
 
   /* ---------- Lightbox: foto ampliada com fade ---------- */
   .lightbox-img { cursor: zoom-in; }
@@ -425,8 +448,11 @@
 </section>
 
     <!-- ============================================================
-     SOBRE: foto, apresentação curta, regiões de atendimento e momentos
-     Fotos tratadas em assets/img (tools/photos.py).
+     SOBRE: foto do consultório, apresentação curta, regiões de atendimento
+     e a galeria "Momentos" (faixa que desliza em loop contínuo; o JS que
+     duplica a faixa e pausa no toque está em scripts.html → galeria;
+     estilos em styles.html → .gallery*). Fotos tratadas em assets/img
+     (tools/photos.py: cortes 4:5, 1000x1250 a principal, 800x1000 a galeria).
      ============================================================ -->
 <section id="sobre" class="relative bg-bg py-20 md:py-28 overflow-hidden">
   <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
@@ -434,7 +460,7 @@
       <div class="w-full md:w-6/12 lg:w-5/12 flex justify-center md:justify-start">
         <div class="w-full max-w-[440px] aspect-[4/5] rounded-2xl overflow-hidden about-img-wrap relative shadow-[0_20px_50px_rgba(201,83,95,0.15)] border border-champagne-200">
           <div class="absolute top-0 left-0 w-full h-full bg-elevated z-10 about-img-overlay"></div>
-          <img src="assets/img/lorena-spitz-gato.jpg" alt="Dra. Lorena Siqueira com um spitz e um gato preto" class="w-full h-full object-cover scale-110 about-img">
+          <img src="assets/img/lorena-consultorio.jpg" alt="Dra. Lorena Siqueira em seu consultório" width="1000" height="1250" class="w-full h-full object-cover scale-110 about-img">
         </div>
       </div>
 
@@ -470,11 +496,26 @@
       </div>
     </div>
 
-    <!-- Momentos -->
-    <div class="grid grid-cols-3 gap-3 md:gap-6 reveal-up">
-      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-golden-quadrado.jpg" alt="Dra. Lorena com um golden retriever" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
-      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-filhotes.jpg" alt="Filhotes recém-nascidos nas mãos da Dra. Lorena" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
-      <div class="aspect-square rounded-2xl overflow-hidden border border-champagne-200 shadow-[0_12px_30px_rgba(201,83,95,0.10)]"><img src="assets/img/lorena-gato-selfie.jpg" alt="Dra. Lorena com uma gata" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700"></div>
+    <!-- Momentos: galeria que desliza sozinha, em loop (cão/gato alternados).
+         A faixa é duplicada pelo JS para o loop não ter emenda; pausa ao
+         passar o mouse, ao tocar e enquanto o lightbox está aberto. -->
+    <div class="gallery reveal-up" aria-label="Momentos da Dra. Lorena com seus pacientes">
+      <div class="gallery-track">
+        <figure class="gallery-item"><img src="assets/img/lorena-spitz-gato.jpg" alt="Dra. Lorena com um spitz e um gato preto" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-golden.jpg" alt="Dra. Lorena abraçando um golden retriever" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-gatinho-selfie.jpg" alt="Dra. Lorena com um gatinho recém-nascido" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-exame-pug.jpg" alt="Dra. Lorena colhendo sangue de um pug" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-cao-peludo.jpg" alt="Dra. Lorena abraçando um cão peludo cinza" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-gato-selfie.jpg" alt="Dra. Lorena com uma gata na mesa do consultório" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-filhote-pitbull.jpg" alt="Dra. Lorena com um filhote de pitbull no colo" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-consultorio-janela.jpg" alt="Dra. Lorena na mesa do consultório" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-gato-persa.jpg" alt="Dra. Lorena com um gato persa laranja" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-filhote-spitz.jpg" alt="Filhote de spitz lambendo o rosto da Dra. Lorena" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-filhotes.jpg" alt="Filhotes recém-nascidos nas mãos da Dra. Lorena" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-yorkshire.jpg" alt="Dra. Lorena com um filhote de yorkshire" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-filhotes-cocker.jpg" alt="Dra. Lorena com dois filhotes de cocker" width="800" height="1000" loading="lazy" decoding="async"></figure>
+        <figure class="gallery-item"><img src="assets/img/lorena-gato-persa-ia.jpg" alt="Dra. Lorena segurando um gato persa" width="800" height="1000" loading="lazy" decoding="async"></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -562,6 +603,41 @@
 
   <script>window.SITE = {"site": {"name": "Lorena Siqueira", "tagline": "Médica Veterinária · CRMV-RJ 18798", "description": "Atendimento veterinário particular para cães e gatos: consultas, vacinação, controle de parasitas e acompanhamento. Cada paciente é único e merece o melhor cuidado.", "lang": "pt-BR", "faviconUrl": "", "domain": "lorenasiqueira.com.br", "canonicalUrl": "https://lorenasiqueira.com.br/", "year": "2026"}, "contact": {"whatsapp": "5522988587898", "whatsappMessage": "Olá, Dra. Lorena! Vi o seu site e gostaria de informações sobre o atendimento particular.", "email": "", "phone": "(22) 98858-7898", "addressLine1": "Atendimento particular", "addressLine2": "Rio de Janeiro e Niterói, RJ", "regionsNote": "Outras regiões sob consulta, conforme a agenda.", "instagram": "", "notifyEmail": "", "sheetId": "", "formEndpoint": "https://script.google.com/macros/s/AKfycbxz2wUc4zkV2h2LtaVFkycCFjSvRaCwTESrL9kCb-OVP8a0fDjYE8DNTpGtr0RjDRMhSA/exec"}, "hero": {"titleLine1": "Lorena", "titleLine2": "Siqueira", "credential": "Médica Veterinária", "crmv": "CRMV-RJ 18798", "subtitle": "Cada paciente é único e merece o melhor cuidado.", "ctaLabel": "Falar no WhatsApp", "ctaHref": "https://wa.me/5522988587898?text=Ol%C3%A1%2C%20Dra.%20Lorena!%20Vi%20o%20seu%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20o%20atendimento%20particular."}};</script>
   <script>
+/* ============================================================
+   GALERIA DESLIZANTE (Sobre → Momentos). Independe do GSAP.
+   Duplica os itens para o loop ser contínuo, mede a largura de uma
+   cópia e define a duração para a velocidade ser a mesma em qualquer
+   tela (~40 px/s). No toque, pausa enquanto o dedo está na tela e por
+   1,5 s depois. Com "menos movimento" ativo, vira uma faixa rolável.
+   ============================================================ */
+(function () {
+  const gal = document.querySelector('.gallery');
+  const track = gal && gal.querySelector('.gallery-track');
+  if (!track) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { gal.classList.add('static'); return; }
+
+  Array.from(track.children).forEach(el => {
+    const clone = el.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.appendChild(clone);
+  });
+
+  const SPEED = 40; // px por segundo
+  function measure() {
+    const half = track.scrollWidth / 2;
+    track.style.setProperty('--gallery-half', half + 'px');
+    track.style.setProperty('--gallery-duration', (half / SPEED).toFixed(1) + 's');
+  }
+  measure();
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(measure, 200); });
+
+  let pt;
+  gal.addEventListener('pointerdown', () => { clearTimeout(pt); gal.classList.add('paused'); }, { passive: true });
+  const resume = () => { clearTimeout(pt); pt = setTimeout(() => gal.classList.remove('paused'), 1500); };
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach(ev => gal.addEventListener(ev, resume, { passive: true }));
+})();
+</script>
+<script>
 (function () {
   'use strict';
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
