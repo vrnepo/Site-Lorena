@@ -250,6 +250,9 @@
   .rose-table td:last-child { color: var(--copper); }
   .rose-table .sub { background: #F6E6E7; color: var(--copper); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
 
+  /* Foto principal do Sobre: 15% mais alta que a caixa para o deslize do parallax (scripts.html → about) */
+  .about-img { height: 115%; will-change: transform; }
+
   /* ---------- Galeria deslizante (Sobre → Momentos) ----------
      Faixa de largura "max-content" com os itens duplicados pelo JS; a
      animação anda exatamente uma cópia (--gallery-half, em px, medida
@@ -452,7 +455,7 @@
      e a galeria "Momentos" (faixa que desliza em loop contínuo; o JS que
      duplica a faixa e pausa no toque está em scripts.html → galeria;
      estilos em styles.html → .gallery*). Fotos tratadas em assets/img
-     (tools/photos.py: cortes 4:5, 1000x1250 a principal, 800x1000 a galeria;
+     (tools/photos.py: cortes 4:5, 1572x1965 a principal, 800x1000 a galeria;
      o número no nome do arquivo é o ID da foto em 03 - Fotos).
      ============================================================ -->
 <section id="sobre" class="relative bg-bg py-20 md:py-28 overflow-hidden">
@@ -461,7 +464,7 @@
       <div class="w-full md:w-6/12 lg:w-5/12 flex justify-center md:justify-start">
         <div class="w-full max-w-[440px] aspect-[4/5] rounded-2xl overflow-hidden about-img-wrap relative shadow-[0_20px_50px_rgba(201,83,95,0.15)] border border-champagne-200">
           <div class="absolute top-0 left-0 w-full h-full bg-elevated z-10 about-img-overlay"></div>
-          <img src="assets/img/01-lorena-consultorio-mesa-janela-limpa-v1.jpg" alt="Dra. Lorena Siqueira em seu consultório" width="1000" height="1250" class="w-full h-full object-cover scale-110 about-img">
+          <img src="assets/img/01-lorena-consultorio-mesa-janela-limpa-v1.jpg" alt="Dra. Lorena Siqueira em seu consultório" width="1572" height="1965" class="w-full object-cover about-img">
         </div>
       </div>
 
@@ -871,7 +874,9 @@
       const overlay = $('.about-img-overlay', wrap);
       const img = $('.about-img', wrap);
       if (overlay) gsap.to(overlay, { height: 0, duration: 1.5, ease: 'power4.inOut', scrollTrigger: { trigger: wrap, start: 'top 80%' } });
-      if (img) gsap.fromTo(img, { scale: 1.2, yPercent: 10 }, { scale: 1, yPercent: -10, ease: 'none',
+      // Deslize vertical puro (sem scale): a imagem tem 115% da altura da caixa (styles .about-img)
+      // e só translada; escala por transform rasterizava em baixa resolução e borrava a foto.
+      if (img) gsap.fromTo(img, { yPercent: 0 }, { yPercent: -12, ease: 'none',
         scrollTrigger: { trigger: wrap, start: 'top bottom', end: 'bottom top', scrub: true } });
     });
 
